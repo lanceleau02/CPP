@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:14:48 by laprieur          #+#    #+#             */
-/*   Updated: 2023/06/27 15:57:38 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:58:28 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	megaphone(int argc, char **argv) {
 		for (int i = 1; argv[i]; i++) {
 			for (int j = 0; argv[i][j]; j++) {
 				if (std::islower(argv[i][j]) != 0) {
-					char c = std::toupper(argv[i][j]);
-					std::cout << c;
+					std::cout << static_cast<char>(std::toupper(argv[i][j]));
 				}
 				else
 					std::cout << argv[i][j];
 			}
 		}
+		std::cout << std::endl;
 	}
 }
 
