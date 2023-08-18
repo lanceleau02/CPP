@@ -6,26 +6,24 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 15:04:30 by laprieur          #+#    #+#              #
-#    Updated: 2023/08/14 11:42:07 by laprieur         ###   ########.fr        #
+#    Updated: 2023/08/17 15:04:29 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=	phonebook
+NAME			:=	a.out
 
 # **************************************************************************** #
 #                                 INGREDIENTS                                  #
 # **************************************************************************** #
 
-SRC				:=	main.cpp			\
-					Contact.cpp			\
-					PhoneBook.cpp		\
-					PhoneBookUtils.cpp	\
+SRC				:=	Account.cpp	\
+					tests.cpp	\
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
 
 CC				:=	c++
-CFLAGS			:=	-Wall -Wextra -Werror -std=c++98 -g
+CFLAGS			:=	-Wall -Wextra -Werror -std=c++98
 CPPFLAGS		:=	-MP -MMD
 LDFLAGS			:=
 

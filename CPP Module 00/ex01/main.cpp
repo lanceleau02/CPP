@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:21:33 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/04 15:20:16 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:20:34 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	main(void) {
 	PhoneBook	phonebook;
 	std::string	input;
 
+	std::cout << BLUE << "WELCOME TO MY AWESOME PHONEBOOK!" << NONE << std::endl;
 	while (1)
 	{
-		std::cout << "Enter a command: ";
-		getline(std::cin, input);
+		input = readLine("Enter a command: ", GREEN);
 		if (input.compare("ADD") == 0)
-			phonebook.addContacts();
-		/* else if (input.compare("SEARCH") == 0)
-			phonebook.searchContacts(); */
+			phonebook.addContact();
+		else if (input.compare("SEARCH") == 0)
+			phonebook.searchContact();
 		else if (input.compare("EXIT") == 0)
 			break ;
 		else
@@ -32,5 +32,6 @@ int	main(void) {
 			continue ;
 		}
 	}
+	std::cout << BLUE << "Bye." << std::endl;
 	return (0);
 }
