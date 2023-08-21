@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:13:34 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 11:08:15 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:06:01 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ std::string	readLine(std::string prompt, std::string color) {
 		std::cout << color << prompt << NONE;
 		std::getline(std::cin, line);
 		if (std::cin.eof())
-			std::cout << BLUE << "\ncin: EOF detected, bye." << NONE << std::endl;
+			std::cerr << BLUE << "\ncin: EOF detected, bye." << NONE << std::endl;
 		else if (std::cin.fail())
-			std::cout << BLUE << "\ncin: Error detected, bye." << NONE << std::endl;
+			std::cerr << BLUE << "\ncin: Error detected, bye." << NONE << std::endl;
 		else
 			continue ;
 		throw PhoneBook::ReadLineExit();
@@ -72,7 +72,7 @@ void	PhoneBook::_printContact() const {
 	ss >> index;
 	if (line.size() != 1 || !isdigit(line.at(0)) || index < 0 || index > std::min(_nbContacts - 1, 8))
 	{
-		std::cout << RED << "Invalid index, please enter a valid one." << NONE << std::endl;
+		std::cerr << RED << "Invalid index, please enter a valid one." << NONE << std::endl;
 		return ;
 	}
 	std::cout
