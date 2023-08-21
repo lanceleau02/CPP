@@ -9,9 +9,6 @@
 
 #include "Account.hpp"
 #include <iostream>
-#include <iomanip>
-#include <ctime>
-#include <sstream>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -103,7 +100,7 @@ bool	Account::makeWithdrawal(int withdrawal) {
 	}
 	else
 		std::cout << "withdrawal:refused" << std::endl;
-	return (0);
+	return 0;
 }
 
 int		Account::checkAmount(void) const {

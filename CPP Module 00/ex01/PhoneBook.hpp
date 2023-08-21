@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:17:36 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/17 11:40:17 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/21 10:55:04 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
-#include <string>
 #include <sstream>
 #include <cstdlib>
 
+#define RED		"\033[31m"
 #define GREEN	"\033[32m"
 #define YELLOW	"\033[33m"
 #define BLUE	"\033[34m"
@@ -42,6 +42,11 @@ class	PhoneBook {
 		
 		void	addContact();
 		void	searchContact();
+
+		class ReadLineExit : public std::exception {
+			public:
+    			virtual const char* what() const throw();
+		};
 };
 
 std::string	readLine(std::string prompt, std::string color);
