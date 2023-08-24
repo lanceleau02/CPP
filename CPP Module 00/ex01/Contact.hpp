@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:14:07 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 10:42:04 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/24 09:19:45 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 class Contact {
 	private:
-		std::string	FirstName;
-		std::string	LastName;
-		std::string	Nickname;
-		std::string	PhoneNumber;
-		std::string	DarkestSecret;
+		std::string	_FirstName;
+		std::string	_LastName;
+		std::string	_Nickname;
+		std::string	_PhoneNumber;
+		std::string	_DarkestSecret;
 	
 	public:
 		Contact();

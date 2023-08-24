@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:20:17 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 11:05:30 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/24 09:40:30 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	PhoneBook::addContact() {
 	this->_contacts[this->_nbContacts % _MAX].setNickname(readLine("Nickname: ", YELLOW));
 	this->_contacts[this->_nbContacts % _MAX].setPhoneNumber(readLine("Phone number: ", YELLOW));
 	this->_contacts[this->_nbContacts % _MAX].setDarkestSecret(readLine("Darkest secret: ", YELLOW));
-	if (_nbContacts < 8)
-		_nbContacts++;
+	_nbContacts++;
 }
 
 void	PhoneBook::searchContact() {

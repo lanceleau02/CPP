@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:17:36 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 10:55:04 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/24 09:08:27 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include <cstdlib>
+#include <string>
 
 #define RED		"\033[31m"
 #define GREEN	"\033[32m"

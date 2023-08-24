@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:13:34 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 16:06:01 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/24 09:43:01 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 std::string	readLine(std::string prompt, std::string color) {
 	std::string	line;
 	
-	while (line.empty())
-	{
+	while (line.empty()) {
 		std::cout << color << prompt << NONE;
 		std::getline(std::cin, line);
 		if (std::cin.eof())
@@ -44,16 +43,15 @@ void	printBorder() {
 
 void	_printFields(std::string field) {
 	if (field.size() > 10)
-			std::cout << YELLOW << field.substr(0, 9) << ".";
-		else
-			std::cout << YELLOW << std::setw(10) << field;
+		std::cout << YELLOW << field.substr(0, 9) << ".";
+	else
+		std::cout << YELLOW << std::setw(10) << field;
 	std::cout << "|";
 }
 
 void	PhoneBook::_printContactsArray() const {
 	printHeader();
-	for (int i = 0; i < std::min(this->_nbContacts, 8); i++)
-	{
+	for (int i = 0; i < std::min(this->_nbContacts, 8); i++) {
 		std::cout << YELLOW << "|" << std::setw(10) << i << "|";
 		_printFields(this->_contacts[i].getFirstName());
 		_printFields(this->_contacts[i].getLastName());
@@ -70,8 +68,7 @@ void	PhoneBook::_printContact() const {
 	line = readLine("Index: ", YELLOW);
 	ss << line;
 	ss >> index;
-	if (line.size() != 1 || !isdigit(line.at(0)) || index < 0 || index > std::min(_nbContacts - 1, 8))
-	{
+	if (line.size() != 1 || !isdigit(line.at(0)) || index < 0 || index > std::min(_nbContacts - 1, 7)) {
 		std::cerr << RED << "Invalid index, please enter a valid one." << NONE << std::endl;
 		return ;
 	}
