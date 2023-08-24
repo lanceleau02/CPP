@@ -5,19 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 13:16:38 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 17:03:08 by laprieur         ###   ########.fr       */
+/*   Created: 2023/08/22 10:30:18 by laprieur          #+#    #+#             */
+/*   Updated: 2023/08/22 11:14:06 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name) {
+Zombie::Zombie(const std::string& name) {
 	_name = name;
 }
 
+Zombie::Zombie() {}
+
 Zombie::~Zombie() {
 	std::cout << _name << " destroyed." << std::endl;
+}
+
+void	Zombie::setName(const std::string& name) {
+	_name = name;
 }
 
 void	Zombie::announce(void) {

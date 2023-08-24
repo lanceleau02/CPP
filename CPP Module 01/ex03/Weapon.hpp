@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 13:16:38 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/21 17:03:08 by laprieur         ###   ########.fr       */
+/*   Created: 2023/08/23 10:04:58 by laprieur          #+#    #+#             */
+/*   Updated: 2023/08/23 11:15:00 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-Zombie::Zombie(std::string name) {
-	_name = name;
-}
+#include <iostream>
+#include <string>
 
-Zombie::~Zombie() {
-	std::cout << _name << " destroyed." << std::endl;
-}
+class Weapon {
+	private:
+		std::string	_type;
+	
+	public:
+		Weapon(std::string type);
+		~Weapon();
+		
+		const std::string& getType() const;
+		void setType(std::string type);
+};
 
-void	Zombie::announce(void) {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif

@@ -5,21 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/08/23 09:59:31 by laprieur         ###   ########.fr        #
+#    Created: 2023/08/22 13:13:06 by laprieur          #+#    #+#              #
+#    Updated: 2023/08/23 10:03:23 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=	ex00
+NAME			:=	ex03
 
 # **************************************************************************** #
 #                                 INGREDIENTS                                  #
 # **************************************************************************** #
 
 SRC				:=	main.cpp		\
-					newZombie.cpp	\
-					randomChump.cpp	\
-					Zombie.cpp		\
+					Weapon.cpp		\
+					HumanA.cpp		\
+					HumanB.cpp		\
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)

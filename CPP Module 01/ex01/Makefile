@@ -6,20 +6,19 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/08/23 09:59:31 by laprieur         ###   ########.fr        #
+#    Updated: 2023/08/23 09:59:21 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=	ex00
+NAME			:=	ex01
 
 # **************************************************************************** #
 #                                 INGREDIENTS                                  #
 # **************************************************************************** #
 
 SRC				:=	main.cpp		\
-					newZombie.cpp	\
-					randomChump.cpp	\
 					Zombie.cpp		\
+					zombieHorde.cpp	\
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
