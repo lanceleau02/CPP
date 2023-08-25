@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/22 13:13:06 by laprieur          #+#    #+#              #
-#    Updated: 2023/08/23 10:03:23 by laprieur         ###   ########.fr        #
+#    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
+#    Updated: 2023/08/25 12:05:25 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ NAME			:=	ex03
 # **************************************************************************** #
 
 SRC				:=	main.cpp		\
-					Weapon.cpp		\
 					HumanA.cpp		\
 					HumanB.cpp		\
+					Weapon.cpp		\
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
 
-CC				:=	c++
-CFLAGS			:=	-Wall -Wextra -Werror -std=c++98
+CXX				:=	c++
+CXXFLAGS		:=	-Wall -Wextra -Werror -std=c++98
 CPPFLAGS		:=	-MP -MMD
 LDFLAGS			:=
 
@@ -42,12 +42,12 @@ MAKEFLAGS		+= --silent --no-print-directory
 all: header $(NAME)
 
 $(NAME): $(SRC_OBJS)
-	$(CC) $(CFLAGS) $(SRC_OBJS) $(LDFLAGS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC_OBJS) $(LDFLAGS) -o $(NAME)
 	@printf "%b" "$(BLUE)CREATED $(CYAN)$(NAME)\n"
 
 .build/%.o: %.cpp
 	mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
+	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $< -o $@
 	@printf "%b" "$(BLUE)CREATED $(CYAN)$@\n"
 
 -include $(DEPS)
@@ -81,8 +81,8 @@ header:
 	@echo "	 \____|_|   |_|     |_|  |_|\___/ \____|\____|_|\___|  \___/|_|	"
 	@echo "				    by laprieur										"
 	@echo
-	@printf "%b" "$(CYAN)CC:	$(YELLOW)$(CC)\n"
-	@printf "%b" "$(CYAN)CFlags:	$(YELLOW)$(CFLAGS)\n"
+	@printf "%b" "$(CYAN)CXX:      $(YELLOW)$(CXX)\n"
+	@printf "%b" "$(CYAN)CXXFlags: $(YELLOW)$(CXXFLAGS)\n"
 	@printf "%b" "$(OFF)"
 	@echo
 
