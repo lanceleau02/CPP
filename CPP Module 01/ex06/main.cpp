@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:56:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/25 11:18:10 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:29:05 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ int	main(int argc, char **argv) {
 	Harl	harl;
 	
 	harl.complain(argv[1]);
+	return 0;
 }

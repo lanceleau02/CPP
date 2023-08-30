@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 18:10:44 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/25 10:53:46 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:11:20 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int	main(void) {
 	harl.complain("ERROR");
 	std::cout << std::endl;
 	harl.complain("NOTHING");
+	return 0;
 }

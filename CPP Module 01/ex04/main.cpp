@@ -6,15 +6,15 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:46:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/24 17:08:45 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:15:54 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 #include <sys/stat.h>
-#include <unistd.h>
 
 static bool	isDirectory(const char *path) {
 	struct stat	info;
@@ -30,6 +30,7 @@ static void	sedIsForLosers(char **argv) {
 	std::string		s2 = argv[3];
 	char			buffer[s1.size() + 1];
 	
+	std::memset(buffer, 0, s1.size() + 1);
 	sourceFile.rdbuf()->pubsetbuf(buffer, s1.size() + 1);
 	try {
 		sourceFile.open(argv[1]);
@@ -62,4 +63,5 @@ int	main(int argc, char **argv) {
 		return 1;
 	}
 	sedIsForLosers(argv);
+	return 0;
 }

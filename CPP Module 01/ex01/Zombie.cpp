@@ -6,15 +6,11 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:30:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/22 11:14:06 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:36:24 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-
-Zombie::Zombie(const std::string& name) {
-	_name = name;
-}
 
 Zombie::Zombie() {}
 
