@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:57:29 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/25 11:31:00 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:47:31 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,14 @@ void	Harl::complain(std::string level) {
 			break ;
 	switch (i) {
 		case 0:
-			for (i = 0; i < 4; i++) {
-				(harl.*levelsFunc[i])();
-				std::cout << std::endl;
-			}
-			break ;
+			(harl.*levelsFunc[0])();
+			std::cout << std::endl;
 		case 1:
-			for (i = 1; i < 4; i++) {
-				(harl.*levelsFunc[i])();
-				std::cout << std::endl;
-			}
-			break ;
+			(harl.*levelsFunc[1])();
+			std::cout << std::endl;
 		case 2:
-			for (i = 2; i < 4; i++) {
-				(harl.*levelsFunc[i])();
-				std::cout << std::endl;
-			}
-			break ;
+			(harl.*levelsFunc[2])();
+			std::cout << std::endl;
 		case 3:
 			(harl.*levelsFunc[3])();
 			break ;
