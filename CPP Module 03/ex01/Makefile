@@ -6,11 +6,11 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/09/01 16:33:28 by laprieur         ###   ########.fr        #
+#    Updated: 2023/09/01 14:30:41 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=	ex00
+NAME			:=	ex01
 
 # **************************************************************************** #
 #                                 INGREDIENTS                                  #
@@ -18,6 +18,7 @@ NAME			:=	ex00
 
 SRC				:=	main.cpp		\
 					ClapTrap.cpp	\
+					ScavTrap.cpp	\
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
