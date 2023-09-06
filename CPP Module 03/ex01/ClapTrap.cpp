@@ -6,13 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:41:27 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/01 16:35:11 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:54:09 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("Someone"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap() : _name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << GREEN << "ClapTrap class Default constructor called!" << NONE << std::endl;
 }
 
@@ -22,6 +22,7 @@ ClapTrap::ClapTrap(const std::string& name) : _name(name), _hitPoints(10), _ener
 
 ClapTrap::ClapTrap(const ClapTrap& source) {
 	*this = source;
+	std::cout << GREEN << "ClapTrap class Copy constructor called!" << NONE << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& source) {
@@ -29,6 +30,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& source) {
 	_hitPoints = source.getHitPoints();
 	_energyPoints = source.getEnergyPoints();
 	_attackDamage = source.getAttackDamage();
+	std::cout << GREEN << "ClapTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 
