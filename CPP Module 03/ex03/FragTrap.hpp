@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:30:28 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 10:23:14 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:27:24 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ class FragTrap : public virtual ClapTrap {
 		FragTrap(const FragTrap& source);
 		FragTrap&	operator=(const FragTrap& source);
 		virtual ~FragTrap();
-		
-		void	attack(const std::string& target);
+
 		void	highFivesGuys(void);
 };
 

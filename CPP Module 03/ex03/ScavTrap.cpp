@@ -6,17 +6,17 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:52:58 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 10:09:04 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:09:39 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("ScavTrap", 100, 50, 20) {
+ScavTrap::ScavTrap() : ClapTrap("ScavTrap", _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
 	std::cout << GREEN << "ScavTrap class Default constructor called!" << NONE << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name, 100, 50, 20) {
+ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name, _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
 	std::cout << GREEN << "ScavTrap class String constructor called!" << NONE << std::endl;
 }
 
@@ -26,10 +26,10 @@ ScavTrap::ScavTrap(const ScavTrap& source) {
 }
 
 ScavTrap&	ScavTrap::operator=(const ScavTrap& source) {
-	_name = source.getName();
-	_hitPoints = source.getHitPoints();
-	_energyPoints = source.getEnergyPoints();
-	_attackDamage = source.getAttackDamage();
+	_name = source._name;
+	_hitPoints = source._hitPoints;
+	_energyPoints = source._energyPoints;
+	_attackDamage = source._attackDamage;
 	std::cout << GREEN << "ScavTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }

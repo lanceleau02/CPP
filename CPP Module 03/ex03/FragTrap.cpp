@@ -6,17 +6,17 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:34:05 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 10:30:53 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:27:18 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap("FragTrap", 100, 100, 30) {
+FragTrap::FragTrap() : ClapTrap("FragTrap", _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
 	std::cout << GREEN << "FragTrap class Default constructor called!" << NONE << std::endl;
 }
 
-FragTrap::FragTrap(const std::string& name) : ClapTrap(name, 100, 100, 30) {
+FragTrap::FragTrap(const std::string& name) : ClapTrap(name, _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
 	std::cout << GREEN << "FragTrap class String constructor called!" << NONE << std::endl;
 }
 
@@ -26,27 +26,16 @@ FragTrap::FragTrap(const FragTrap& source) {
 }
 
 FragTrap&	FragTrap::operator=(const FragTrap& source) {
-	_name = source.getName();
-	_hitPoints = source.getHitPoints();
-	_energyPoints = source.getEnergyPoints();
-	_attackDamage = source.getAttackDamage();
+	_name = source._name;
+	_hitPoints = source._hitPoints;
+	_energyPoints = source._energyPoints;
+	_attackDamage = source._attackDamage;
 	std::cout << GREEN << "FragTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 
 FragTrap::~FragTrap() {
 	std::cout << RED << "FragTrap class Default destructor called!" << NONE << std::endl;
-}
-
-void	FragTrap::attack(const std::string& target) {
-	if (verifyHitAndEnergyPoints() == false)
-		return ;
-	_energyPoints--;
-	std::cout
-		<< "FragTrap " << BLUE << _name << NONE << " attacks "
-		<< RED << target << NONE << ", causing "
-		<< RED << _attackDamage << NONE << " points of damage and loses "
-		<< RED << "1" << NONE << " energy point!" << std::endl;
 }
 
 void	FragTrap::highFivesGuys() {
