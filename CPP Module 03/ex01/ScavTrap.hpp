@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:53:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 14:08:47 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:27:15 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
-	protected:
+	private:
 		static const unsigned int	_maxHitPoints = 100;
 		static const unsigned int	_maxEnergyPoints = 50;
 		static const unsigned int	_maxAttackDamage = 20;

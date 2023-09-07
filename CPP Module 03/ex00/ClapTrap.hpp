@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:40:41 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 14:06:16 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:25:31 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define NONE	"\033[0m"
 
 class ClapTrap {
-	protected:
+	private:
 		std::string		_name;
 		unsigned int	_hitPoints;
 		unsigned int	_energyPoints;
