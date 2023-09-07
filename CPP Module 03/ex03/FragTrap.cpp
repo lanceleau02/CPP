@@ -6,17 +6,19 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:34:05 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 11:27:18 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:59:05 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap("FragTrap", _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
+FragTrap::FragTrap() :
+	ClapTrap("FragTrap", _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
 	std::cout << GREEN << "FragTrap class Default constructor called!" << NONE << std::endl;
 }
 
-FragTrap::FragTrap(const std::string& name) : ClapTrap(name, _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
+FragTrap::FragTrap(const std::string& name) :
+	ClapTrap(name, _maxHitPoints, _maxEnergyPoints, _maxAttackDamage) {
 	std::cout << GREEN << "FragTrap class String constructor called!" << NONE << std::endl;
 }
 
