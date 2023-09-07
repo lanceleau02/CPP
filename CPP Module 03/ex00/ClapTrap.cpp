@@ -6,17 +6,19 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:41:27 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/06 13:54:09 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:47:25 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap() :
+	_name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << GREEN << "ClapTrap class Default constructor called!" << NONE << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string& name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(const std::string& name) :
+	_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << GREEN << "ClapTrap class String constructor called!" << NONE << std::endl;
 }
 
@@ -26,32 +28,16 @@ ClapTrap::ClapTrap(const ClapTrap& source) {
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& source) {
-	_name = source.getName();
-	_hitPoints = source.getHitPoints();
-	_energyPoints = source.getEnergyPoints();
-	_attackDamage = source.getAttackDamage();
+	_name = source._name;
+	_hitPoints = source._hitPoints;
+	_energyPoints = source._energyPoints;
+	_attackDamage = source._attackDamage;
 	std::cout << GREEN << "ClapTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 
 ClapTrap::~ClapTrap() {
 	std::cout << RED << "ClapTrap class Default destructor called!" << NONE << std::endl;
-}
-
-std::string	ClapTrap::getName() const {
-	return _name;
-}
-
-int	ClapTrap::getHitPoints() const {
-	return _hitPoints;
-}
-
-int	ClapTrap::getEnergyPoints() const {
-	return _energyPoints;
-}
-
-int	ClapTrap::getAttackDamage() const {
-	return _attackDamage;
 }
 
 void	ClapTrap::printStats() {

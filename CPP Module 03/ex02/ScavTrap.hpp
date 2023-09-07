@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:53:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/06 14:48:14 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:08:47 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@
 #include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
-	private:
+	protected:
+		static const unsigned int	_maxHitPoints = 100;
+		static const unsigned int	_maxEnergyPoints = 50;
+		static const unsigned int	_maxAttackDamage = 20;
 
 	public:
 		ScavTrap();
 		ScavTrap(const std::string& name);
 		ScavTrap(const ScavTrap& source);
 		ScavTrap&	operator=(const ScavTrap& source);
-		virtual ~ScavTrap();
+		~ScavTrap();
 		
 		void	attack(const std::string& target);
 		void	guardGate();
