@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:30:28 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/06 15:44:43 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 10:23:14 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : public virtual ClapTrap {
 	protected:
-		static const unsigned int	_maxHitPoints;
-		static const unsigned int	_maxEnergyPoints;
-		static const unsigned int	_maxAttackDamage;
+		static const unsigned int	_maxHitPoints = 100;
+		static const unsigned int	_maxEnergyPoints = 100;
+		static const unsigned int	_maxAttackDamage = 30;
 
 	public:
 		FragTrap();

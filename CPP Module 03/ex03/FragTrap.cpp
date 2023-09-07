@@ -6,25 +6,17 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:34:05 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/06 14:49:13 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 10:30:53 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap() {
-	_name = "FragTrap";
-	_hitPoints = 100;
-	_energyPoints = 100;
-	_attackDamage = 30;
+FragTrap::FragTrap() : ClapTrap("FragTrap", 100, 100, 30) {
 	std::cout << GREEN << "FragTrap class Default constructor called!" << NONE << std::endl;
 }
 
-FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
-	_name = name;
-	_hitPoints = 100;
-	_energyPoints = 100;
-	_attackDamage = 30;
+FragTrap::FragTrap(const std::string& name) : ClapTrap(name, 100, 100, 30) {
 	std::cout << GREEN << "FragTrap class String constructor called!" << NONE << std::endl;
 }
 
@@ -58,5 +50,5 @@ void	FragTrap::attack(const std::string& target) {
 }
 
 void	FragTrap::highFivesGuys() {
-	std::cout << BLUE << "FragTrap " << _name << " is giving you a hive fives!" << NONE << std::endl;
+	std::cout << BLUE << "FragTrap " << _name << " is giving you a high five!" << NONE << std::endl;
 }

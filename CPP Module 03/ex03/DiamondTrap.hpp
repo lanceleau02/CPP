@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:51:02 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/06 15:54:33 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/07 10:23:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 class DiamondTrap : public ScavTrap, public FragTrap {
 	private:
 		std::string		_name;
-		using FragTrap::_maxHitPoints;
-		using ScavTrap::_maxEnergyPoints;
-		using FragTrap::_maxAttackDamage;
 
 	public:
 		DiamondTrap();
