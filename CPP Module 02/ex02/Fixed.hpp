@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 14:18:28 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/29 13:52:24 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:15:56 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Fixed {
 		Fixed(const float param);
 		Fixed(const Fixed& source);
 		Fixed&	operator=(const Fixed& source);
+		~Fixed();
 
 		bool	operator>(const Fixed& source);
 		bool	operator<(const Fixed& source);
@@ -44,7 +45,6 @@ class Fixed {
 		Fixed	operator++(int);
 		Fixed&	operator--(void);
 		Fixed	operator--(int);
-		~Fixed();
 
 		int					getRawBits(void) const;
 		int					toInt(void) const;

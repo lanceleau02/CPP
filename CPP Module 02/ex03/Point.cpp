@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:30:24 by laprieur          #+#    #+#             */
-/*   Updated: 2023/08/29 17:34:07 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:00:21 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ Point&	Point::operator=(const Point& source) {
 Point::~Point() {}
 
 float	Point::getX() const {
-	return this->_x.toFloat();
+	return _x.toFloat();
 }
 
 float	Point::getY() const {
-	return this->_y.toFloat();
+	return _y.toFloat();
 }
