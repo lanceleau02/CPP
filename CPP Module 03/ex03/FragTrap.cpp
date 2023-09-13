@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:34:05 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 14:59:05 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:30:41 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ FragTrap::FragTrap(const std::string& name) :
 	std::cout << GREEN << "FragTrap class String constructor called!" << NONE << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& source) {
-	*this = source;
+FragTrap::FragTrap(const FragTrap& source) : ClapTrap(source) {
 	std::cout << GREEN << "FragTrap class Copy constructor called!" << NONE << std::endl;
+	*this = source;
 }
 
 FragTrap&	FragTrap::operator=(const FragTrap& source) {
+	std::cout << GREEN << "FragTrap class Assignment operator called!" << NONE << std::endl;
 	_name = source._name;
 	_hitPoints = source._hitPoints;
 	_energyPoints = source._energyPoints;
 	_attackDamage = source._attackDamage;
-	std::cout << GREEN << "FragTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 

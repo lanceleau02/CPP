@@ -6,11 +6,11 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/09/12 11:39:44 by laprieur         ###   ########.fr        #
+#    Updated: 2023/09/13 16:12:24 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=	ex00
+NAME			:=	ex01
 
 # **************************************************************************** #
 #                                 INGREDIENTS                                  #
@@ -22,13 +22,14 @@ SRC				:=	main.cpp		\
 					Cat.cpp			\
 					WrongAnimal.cpp	\
 					WrongCat.cpp	\
+					Brain.cpp		\
 					
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
 
 CXX				:=	c++
-CXXFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS		:=	-Wall -Wextra -Werror -std=c++98 -g
 CPPFLAGS		:=	-MP -MMD
 LDFLAGS			:=
 

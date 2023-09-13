@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:51:05 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 13:53:46 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:10:37 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ DiamondTrap::DiamondTrap(const std::string& name) :
 	std::cout << GREEN << "DiamondTrap class String constructor called!" << NONE << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& source) {
-	*this = source;
+DiamondTrap::DiamondTrap(const DiamondTrap& source) : ClapTrap(source), ScavTrap(source), FragTrap(source), _name(source._name) {
 	std::cout << GREEN << "DiamondTrap class Copy constructor called!" << NONE << std::endl;
+	*this = source;
 }
 
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& source) {
+	std::cout << GREEN << "DiamondTrap class Assignment operator called!" << NONE << std::endl;
 	_name = source._name;
 	_hitPoints = source._hitPoints;
 	_energyPoints = source._energyPoints;
 	_attackDamage = source._attackDamage;
-	std::cout << GREEN << "DiamondTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 

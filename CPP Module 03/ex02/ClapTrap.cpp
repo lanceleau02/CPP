@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:41:27 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 14:47:46 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:24:49 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ ClapTrap::ClapTrap(std::string name, unsigned int hitPoints, unsigned int energy
 }
 
 ClapTrap::ClapTrap(const ClapTrap& source) {
-	*this = source;
 	std::cout << GREEN << "ClapTrap class Copy constructor called!" << NONE << std::endl;
+	*this = source;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& source) {
+	std::cout << GREEN << "ClapTrap class Assignment operator called!" << NONE << std::endl;
 	_name = source._name;
 	_hitPoints = source._hitPoints;
 	_energyPoints = source._energyPoints;
 	_attackDamage = source._attackDamage;
-	std::cout << GREEN << "ClapTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:52:58 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/07 14:49:01 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:13:38 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ ScavTrap::ScavTrap(const std::string& name) :
 	std::cout << GREEN << "ScavTrap class String constructor called!" << NONE << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& source) {
-	*this = source;
+ScavTrap::ScavTrap(const ScavTrap& source) : ClapTrap(source) {
 	std::cout << GREEN << "ScavTrap class Copy constructor called!" << NONE << std::endl;
+	*this = source;
 }
 
 ScavTrap&	ScavTrap::operator=(const ScavTrap& source) {
+	std::cout << GREEN << "ScavTrap class Assignment operator called!" << NONE << std::endl;
 	_name = source._name;
 	_hitPoints = source._hitPoints;
 	_energyPoints = source._energyPoints;
 	_attackDamage = source._attackDamage;
-	std::cout << GREEN << "ScavTrap class Assignment operator called!" << NONE << std::endl;
 	return *this;
 }
 
