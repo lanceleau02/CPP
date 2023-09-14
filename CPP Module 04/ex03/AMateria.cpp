@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Created: 2023/09/14 13:05:03 by laprieur          #+#    #+#             */
+/*   Updated: 2023/09/14 13:15:37 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#include "AMateria.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+AMateria::AMateria() {
 
-class Cat : public virtual Animal {
-	private:
-		Brain*	_brain;
+}
 
-	public:
-		Cat();
-		Cat(const Cat& source);
-		Cat&	operator=(const Cat& source);
-		~Cat();
-		
-		Brain*	getBrain(void) const;
-};
+AMateria::AMateria(std::string const& type) {
 
-#endif
+}
+
+AMateria::AMateria(const AMateria& source) {
+
+}
+
+AMateria&	AMateria::operator=(const AMateria& source) {
+
+}
+
+AMateria::~AMateria() {
+
+}
+
+std::string const&	AMateria::getType() const {
+	
+}
+
+AMateria*	AMateria::clone() const {
+
+}
+
+void		AMateria::use(ICharacter& target) {
+
+}

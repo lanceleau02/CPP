@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Created: 2023/09/14 17:23:27 by laprieur          #+#    #+#             */
+/*   Updated: 2023/09/14 17:25:40 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include "ICharacter.hpp"
 
-class Cat : public virtual Animal {
-	private:
-		Brain*	_brain;
+class Character : public ICharacter {
 
-	public:
-		Cat();
-		Cat(const Cat& source);
-		Cat&	operator=(const Cat& source);
-		~Cat();
-		
-		Brain*	getBrain(void) const;
 };
 
 #endif

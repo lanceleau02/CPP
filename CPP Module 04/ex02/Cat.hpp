@@ -6,17 +6,17 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:54:40 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat : public virtual Animal {
+class Cat : public virtual AAnimal {
 	private:
 		Brain*	_brain;
 
@@ -27,6 +27,7 @@ class Cat : public virtual Animal {
 		~Cat();
 		
 		Brain*	getBrain(void) const;
+		void	makeSound(void) const;
 };
 
 #endif

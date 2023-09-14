@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:54:31 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat : public virtual Animal {
+class Dog : public virtual AAnimal {
 	private:
 		Brain*	_brain;
-
+	
 	public:
-		Cat();
-		Cat(const Cat& source);
-		Cat&	operator=(const Cat& source);
-		~Cat();
-		
+		Dog();
+		Dog(const Dog& source);
+		Dog&	operator=(const Dog& source);
+		~Dog();
+
 		Brain*	getBrain(void) const;
+		void	makeSound(void) const;
+		
 };
 
 #endif

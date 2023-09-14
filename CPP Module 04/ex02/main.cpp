@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:09:54 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:27:41 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:48:55 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int main() {
 	std::cout << YELLOW << "+--------+ MAIN TESTS +--------+" << NONE << std::endl;
 	std::cout << std::endl;
 	{
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		const AAnimal* j = new Dog();
+		const AAnimal* i = new Cat();
 		
 		delete j; //should not create a leak
 		delete i;
@@ -27,7 +27,7 @@ int main() {
 	std::cout << YELLOW << "+--------+ ARRAY TEST +--------+" << NONE << std::endl;
 	std::cout << std::endl;
 	{
-		Animal*	animals[10];
+		AAnimal*	animals[10];
 
 		std::cout << "Let's create all the animals!" << std::endl << std::endl;
 		for (int i = 0; i < 10; i++) {

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/13 16:48:59 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:51:14 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ Cat::~Cat() {
 	delete _brain;
 }
 
-Brain*	Cat::getBrain(void) {
+Brain*	Cat::getBrain(void) const {
 	return _brain;
 }

@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Created: 2023/09/13 11:15:23 by laprieur          #+#    #+#             */
+/*   Updated: 2023/09/14 11:52:39 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <string>
+#include <iostream>
 
-class Cat : public virtual Animal {
+#define RED		"\033[31m"
+#define GREEN	"\033[32m"
+#define NONE	"\033[0m"
+
+class Brain {
 	private:
-		Brain*	_brain;
+		std::string	_ideas[100];
 
 	public:
-		Cat();
-		Cat(const Cat& source);
-		Cat&	operator=(const Cat& source);
-		~Cat();
+		Brain();
+		Brain(const Brain& source);
+		Brain(const std::string& idea);
+		Brain&	operator=(const Brain& source);
+		~Brain();
 		
-		Brain*	getBrain(void) const;
+		void		setIdea(int index, const std::string& idea);
+		std::string	getIdea(int index) const;
 };
 
 #endif

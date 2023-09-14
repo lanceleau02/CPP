@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:09 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:54:35 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog() {
 	_brain = new Brain();
 }
 
-Dog::Dog(const Dog& source) : Animal(source) {
+Dog::Dog(const Dog& source) : AAnimal(source) {
 	std::cout << GREEN << "Dog class Copy constructor called!" << NONE << std::endl;
 	_brain = new Brain();
 	*this = source;
@@ -38,4 +38,8 @@ Dog::~Dog() {
 
 Brain*	Dog::getBrain(void) const {
 	return _brain;
+}
+
+void	Dog::makeSound(void) const {
+	std::cout << BLUE << "Waf! Waf!" << NONE << std::endl;
 }

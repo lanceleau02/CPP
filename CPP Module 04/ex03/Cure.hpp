@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Created: 2023/09/14 17:16:02 by laprieur          #+#    #+#             */
+/*   Updated: 2023/09/14 17:18:08 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include "AMateria.hpp"
 
-class Cat : public virtual Animal {
+class Cure : public AMateria {
 	private:
-		Brain*	_brain;
-
+	
 	public:
-		Cat();
-		Cat(const Cat& source);
-		Cat&	operator=(const Cat& source);
-		~Cat();
-		
-		Brain*	getBrain(void) const;
+		Cure();
+		Cure(const Cure& source);	
+		Cure&	operator=(const Cure& source);
+		~Cure();
 };
 
 #endif

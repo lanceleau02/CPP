@@ -6,23 +6,23 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/09/14 13:04:29 by laprieur         ###   ########.fr        #
+#    Updated: 2023/09/14 13:04:23 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=	ex01
+NAME			:=	ex02
 
 # **************************************************************************** #
 #                                 INGREDIENTS                                  #
 # **************************************************************************** #
 
 SRC				:=	main.cpp		\
-					Animal.cpp		\
 					Dog.cpp			\
 					Cat.cpp			\
 					WrongAnimal.cpp	\
 					WrongCat.cpp	\
 					Brain.cpp		\
+					AAnimal.cpp		\
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)

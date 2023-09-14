@@ -6,7 +6,7 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/09/12 11:39:44 by laprieur         ###   ########.fr        #
+#    Updated: 2023/09/14 13:04:34 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ SRC				:=	main.cpp		\
 					Cat.cpp			\
 					WrongAnimal.cpp	\
 					WrongCat.cpp	\
-					
 
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/13 16:09:45 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:50:59 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Dog : public virtual Animal {
 		Dog&	operator=(const Dog& source);
 		~Dog();
 
-		Brain*	getBrain(void) ;
+		Brain*	getBrain(void) const;
 };
 
 #endif

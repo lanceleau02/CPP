@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 11:15:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:49 by laprieur         ###   ########.fr       */
+/*   Created: 2023/09/14 13:05:30 by laprieur          #+#    #+#             */
+/*   Updated: 2023/09/14 17:12:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 #include <string>
 #include <iostream>
 
 #define RED		"\033[31m"
 #define GREEN	"\033[32m"
+#define YELLOW	"\033[33m"
+#define BLUE	"\033[34m"
 #define NONE	"\033[0m"
 
-class Brain {
-	private:
-		std::string	_ideas[100];
-
+class AMateria {
+	protected:
+		std::string	_type;
+	
 	public:
-		Brain();
-		Brain(const Brain& source);
-		Brain(const std::string& idea);
-		Brain&	operator=(const Brain& source);
-		~Brain();
-		
-		void		setIdea(int index, const std::string& idea);
-		std::string	getIdea(int index) const;
+		AMateria();
+		AMateria(std::string const& type);
+		AMateria(const AMateria& source);
+		AMateria&	operator=(const AMateria& source);
+		virtual ~AMateria();
+
+		std::string const&	getType() const;
+		virtual AMateria*	clone() const = 0;
+		virtual void		use(ICharacter& target);
 };
 
 #endif

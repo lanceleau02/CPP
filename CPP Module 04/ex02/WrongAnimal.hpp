@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:05:24 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WrongAnimal_HPP
+# define WrongAnimal_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <string>
+#include <iostream>
 
-class Cat : public virtual Animal {
-	private:
-		Brain*	_brain;
+#define RED		"\033[31m"
+#define GREEN	"\033[32m"
+#define BLUE	"\033[34m"
+#define NONE	"\033[0m"
+
+class WrongAnimal {
+	protected:
+		std::string	_type;
 
 	public:
-		Cat();
-		Cat(const Cat& source);
-		Cat&	operator=(const Cat& source);
-		~Cat();
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal& source);
+		WrongAnimal&	operator=(const WrongAnimal& source);
+		virtual ~WrongAnimal();
 		
-		Brain*	getBrain(void) const;
+		void		makeSound(void) const;
+		std::string	getType(void) const;
 };
 
 #endif
