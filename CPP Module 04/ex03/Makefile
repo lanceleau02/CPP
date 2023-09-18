@@ -6,7 +6,7 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 11:42:22 by laprieur          #+#    #+#              #
-#    Updated: 2023/09/14 13:04:16 by laprieur         ###   ########.fr        #
+#    Updated: 2023/09/18 13:20:10 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,12 @@ NAME			:=	ex03
 #                                 INGREDIENTS                                  #
 # **************************************************************************** #
 
-SRC				:=	main.cpp		\
+SRC				:=	main.cpp			\
+					AMateria.cpp		\
+					Character.cpp		\
+					Cure.cpp			\
+					Ice.cpp				\
+					MateriaSource.cpp	\
 					
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
