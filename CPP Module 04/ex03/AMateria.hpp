@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:05:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 14:30:41 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:30:35 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include "ICharacter.hpp"
 
 #define RED		"\033[31m"
 #define GREEN	"\033[32m"

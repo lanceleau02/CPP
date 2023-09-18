@@ -6,16 +6,17 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:53:04 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 14:20:38 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:31:41 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-class MateriaSource : public IMateriaSource {
-	private:
+#include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
+class MateriaSource : public IMateriaSource {
 	public:
 		MateriaSource();
 		MateriaSource(const MateriaSource& source);

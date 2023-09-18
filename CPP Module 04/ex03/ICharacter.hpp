@@ -6,12 +6,16 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:21:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 14:20:50 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:35:11 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
+
+#include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter {
 	public:

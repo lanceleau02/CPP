@@ -6,14 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:52:35 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 14:24:14 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:26:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
 #include "Character.hpp"
-#include "ICharacter.hpp"
-#include "IMateriaSource.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 #include "MateriaSource.hpp"
 
 int main()

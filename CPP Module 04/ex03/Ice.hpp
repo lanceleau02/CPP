@@ -6,12 +6,14 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:52:48 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 14:10:35 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:30:27 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_HPP
 # define ICE_HPP
+
+#include "AMateria.hpp"
 
 class Ice : public AMateria {
 	private:
@@ -22,7 +24,9 @@ class Ice : public AMateria {
 		Ice&	operator=(const Ice& source);
 		~Ice();
 		
-		virtual AMateria*	clone() const;
+		std::string const& getType() const;
+		virtual AMateria* clone() const;
+    	virtual void use(ICharacter& target);
 };
 
 #endif
