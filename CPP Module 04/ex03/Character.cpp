@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 11:09:50 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:33:18 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Character::Character() : _name("Unknown") {
 		_inventory[i] = NULL;
 }
 
-Character::Character(const std::string& name) _name(name) {
+Character::Character(const std::string& name) : _name(name) {
 	std::cout << GREEN << "Character class Name constructor called!" << NONE << std::endl;
 	for (int i = 0; i < 4; i++)
 		_inventory[i] = NULL;
@@ -39,20 +39,48 @@ Character&	Character::operator=(const Character& source) {
 
 Character::~Character() {
 	std::cout << GREEN << "Character class Default destructor called!" << NONE << std::endl;
+	for (int i = 0; i < 4; i++)
+		if (_inventory[i] != NULL)
+			delete _inventory[i];
 }
 
-std::string const&	getName() const {
+bool	Character::verifyFullInventory() const {
+	for (int i = 0; i < 4; i++) {
+		if (_inventory[i] == NULL)
+			return false;
+	}
+	return true;
+}
+
+std::string const&	Character::getName() const {
 	return _name;
 }
 
-void	equip(AMateria* m) {
-
+void	Character::equip(AMateria* m) {
+	for (int i = 0; i < 4; i++) {
+		if (_inventory[i] == NULL && !verifyFullInventory()) {
+			_inventory[i] = m;
+			std::cout << GREEN << "Character " << _name << " equips " << m->getType() << " at slot " << i << "!" << NONE << std::endl;
+		}
+		else
+			std::cout << RED << "Character " << _name << " cannot equip " << m->getType() << "!" << NONE << std::endl;
+	}
 }
 
-void	unequip(int idx) {
-
+void	Character::unequip(int idx) {
+	if (_inventory[idx] != NULL) {
+		_inventory[idx] = NULL;
+		std::cout << GREEN << "Character " << _name << " unequips " << _inventory[idx]->getType() << " at slot " << idx << "!" << NONE << std::endl;
+	}
+	else
+		std::cout << RED << "Character " << _name << " cannot unequip " << _inventory[idx]->getType() << " at slot " << idx << "!" << NONE << std::endl;
 }
 
-void	use(int idx, ICharacter& target) {
-	
+void	Character::use(int idx, ICharacter& target) {
+	if (_inventory[idx] != NULL) {
+		_inventory[idx]->use(target);
+		std::cout << GREEN << "Character " << _name << " use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
+	}
+	else
+		std::cout << RED << "Character " << _name << " cannot use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
 }

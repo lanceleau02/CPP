@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:05:03 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/15 14:47:31 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:53:34 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ std::string const&	AMateria::getType() const {
 	return _type;
 }
 
-AMateria*	AMateria::clone() const {
-	AMateria*	clone = new AMateria();
-	return clone;
-}
-
 void		AMateria::use(ICharacter& target) {
-	std::cout << "AMateria " << _type << " used on " << target << "!" << std::endl;
+	std::cout << "AMateria " << _type << " used on " << target.getName() << "!" << std::endl;
 }

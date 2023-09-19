@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:18:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/15 15:13:42 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:35:58 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,8 @@ Cure::~Cure() {
 AMateria*	Cure::clone() const {
 	AMateria*	clone = new Cure();
 	return clone;
+}
+
+void	Cure::use(ICharacter& target) {
+	std::cout << BLUE << "* heals " << target.getName() << "'s wounds *" << NONE << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:52:48 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/18 15:30:27 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:36:22 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ class Ice : public AMateria {
 		Ice(const Ice& source);
 		Ice&	operator=(const Ice& source);
 		~Ice();
-		
-		std::string const& getType() const;
+
 		virtual AMateria* clone() const;
     	virtual void use(ICharacter& target);
 };
