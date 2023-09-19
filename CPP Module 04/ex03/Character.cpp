@@ -44,27 +44,19 @@ Character::~Character() {
 			delete _inventory[i];
 }
 
-bool	Character::verifyFullInventory() const {
-	for (int i = 0; i < 4; i++) {
-		if (_inventory[i] == NULL)
-			return false;
-	}
-	return true;
-}
-
 std::string const&	Character::getName() const {
 	return _name;
 }
 
 void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (_inventory[i] == NULL && !verifyFullInventory()) {
+		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
 			std::cout << GREEN << "Character " << _name << " equips the Materia at slot " << i << "!" << NONE << std::endl;
+			return ;
 		}
-		else
-			std::cout << RED << "Character " << _name << " cannot equip this Materia!" << NONE << std::endl;
 	}
+	std::cout << RED << "Character " << _name << " cannot equip this Materia!" << NONE << std::endl;
 }
 
 void	Character::unequip(int idx) {

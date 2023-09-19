@@ -32,25 +32,20 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& source) {
 
 MateriaSource::~MateriaSource() {
 	std::cout << GREEN << "MateriaSource class Default destructor called!" << NONE << std::endl;
-}
-
-bool	MateriaSource::verifyFullInventory() const {
-	for (int i = 0; i < 4; i++) {
-		if (_materias[i] == NULL)
-			return false;
-	}
-	return true;
+	for (int i = 0; i < 4; i++)
+		if (_materias[i] != NULL)
+			delete _materias[i];
 }
 
 void MateriaSource::learnMateria(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (_materias[i] != NULL && !verifyFullInventory()) {
+		if (_materias[i] == NULL) {
 			_materias[i] = m;
 			std::cout << GREEN << "Materia " << m->getType() << " learned and stored at slot " << i << "!" << NONE << std::endl;
+			return ;
 		}
-		else
-			std::cout << RED << "Materia " << m->getType() << " cannot be learned!" << NONE << std::endl;
 	}
+	std::cout << RED << "Materia " << m->getType() << " cannot be learned!" << NONE << std::endl;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {

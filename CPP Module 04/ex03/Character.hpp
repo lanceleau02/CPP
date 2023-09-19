@@ -28,7 +28,6 @@ class Character : public ICharacter {
 		Character&	operator=(const Character& source);
 		~Character();
 
-		bool verifyFullInventory() const;
 		virtual std::string const& getName() const;
 		virtual void equip(AMateria* m);
 		virtual void unequip(int idx);

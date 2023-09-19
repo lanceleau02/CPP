@@ -26,7 +26,6 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource& operator=(const MateriaSource& source);
 		virtual ~MateriaSource();
 
-		bool verifyFullInventory() const;
 		virtual void learnMateria(AMateria*);
 		virtual AMateria* createMateria(std::string const& type);
 };
