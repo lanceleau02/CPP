@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 15:33:18 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:36:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,20 @@ void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (_inventory[i] == NULL && !verifyFullInventory()) {
 			_inventory[i] = m;
-			std::cout << GREEN << "Character " << _name << " equips " << m->getType() << " at slot " << i << "!" << NONE << std::endl;
+			std::cout << GREEN << "Character " << _name << " equips the Materia at slot " << i << "!" << NONE << std::endl;
 		}
 		else
-			std::cout << RED << "Character " << _name << " cannot equip " << m->getType() << "!" << NONE << std::endl;
+			std::cout << RED << "Character " << _name << " cannot equip this Materia!" << NONE << std::endl;
 	}
 }
 
 void	Character::unequip(int idx) {
 	if (_inventory[idx] != NULL) {
 		_inventory[idx] = NULL;
-		std::cout << GREEN << "Character " << _name << " unequips " << _inventory[idx]->getType() << " at slot " << idx << "!" << NONE << std::endl;
+		std::cout << GREEN << "Character " << _name << " unequips the Materia at slot " << idx << "!" << NONE << std::endl;
 	}
 	else
-		std::cout << RED << "Character " << _name << " cannot unequip " << _inventory[idx]->getType() << " at slot " << idx << "!" << NONE << std::endl;
+		std::cout << RED << "Character " << _name << " cannot unequip this Materia!" << NONE << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target) {
@@ -82,5 +82,5 @@ void	Character::use(int idx, ICharacter& target) {
 		std::cout << GREEN << "Character " << _name << " use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
 	}
 	else
-		std::cout << RED << "Character " << _name << " cannot use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
+		std::cout << RED << "Character " << _name << " cannot use this type of Materia on " << target.getName() << NONE << std::endl;
 }

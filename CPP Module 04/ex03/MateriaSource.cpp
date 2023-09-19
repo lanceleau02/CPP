@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:55:00 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 15:48:34 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:54:57 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 MateriaSource::MateriaSource() {
 	std::cout << GREEN << "MateriaSource class Default constructor called!" << NONE << std::endl;
+	for (int i = 0; i < 4; i++)
+		_materias[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& source) {
@@ -42,7 +44,7 @@ bool	MateriaSource::verifyFullInventory() const {
 
 void MateriaSource::learnMateria(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (_materias[i] == NULL && !verifyFullInventory()) {
+		if (_materias[i] != NULL && !verifyFullInventory()) {
 			_materias[i] = m;
 			std::cout << GREEN << "Materia " << m->getType() << " learned and stored at slot " << i << "!" << NONE << std::endl;
 		}
