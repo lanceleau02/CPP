@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 16:36:03 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:46:00 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Character&	Character::operator=(const Character& source) {
 }
 
 Character::~Character() {
-	std::cout << GREEN << "Character class Default destructor called!" << NONE << std::endl;
+	std::cout << RED << "Character class Default destructor called!" << NONE << std::endl;
 	for (int i = 0; i < 4; i++)
 		if (_inventory[i] != NULL)
 			delete _inventory[i];
@@ -52,26 +52,27 @@ void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
-			std::cout << GREEN << "Character " << _name << " equips the Materia at slot " << i << "!" << NONE << std::endl;
+			std::cout << BLUE << "Character " << _name << " equips the Materia at slot " << i << "!" << NONE << std::endl;
 			return ;
 		}
 	}
 	std::cout << RED << "Character " << _name << " cannot equip this Materia!" << NONE << std::endl;
+	delete m;
 }
 
 void	Character::unequip(int idx) {
-	if (_inventory[idx] != NULL) {
+	if (idx < 4 && _inventory[idx] != NULL) {
 		_inventory[idx] = NULL;
-		std::cout << GREEN << "Character " << _name << " unequips the Materia at slot " << idx << "!" << NONE << std::endl;
+		std::cout << BLUE << "Character " << _name << " unequips the Materia at slot " << idx << "!" << NONE << std::endl;
 	}
 	else
 		std::cout << RED << "Character " << _name << " cannot unequip this Materia!" << NONE << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if (_inventory[idx] != NULL) {
+	if (idx < 4 && _inventory[idx] != NULL) {
 		_inventory[idx]->use(target);
-		std::cout << GREEN << "Character " << _name << " use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
+		std::cout << BLUE << "Character " << _name << " use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
 	}
 	else
 		std::cout << RED << "Character " << _name << " cannot use this type of Materia on " << target.getName() << NONE << std::endl;

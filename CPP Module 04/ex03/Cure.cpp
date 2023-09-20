@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:18:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 15:35:58 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:07:37 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cure&	Cure::operator=(const Cure& source) {
 }
 
 Cure::~Cure() {
-	std::cout << GREEN << "Cure class Default destructor called!" << NONE << std::endl;
+	std::cout << RED << "Cure class Default destructor called!" << NONE << std::endl;
 }
 
 AMateria*	Cure::clone() const {

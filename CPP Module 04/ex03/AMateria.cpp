@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:05:03 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 13:53:34 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:07:50 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ AMateria&	AMateria::operator=(const AMateria& source) {
 }
 
 AMateria::~AMateria() {
-	std::cout << GREEN << "AMateria class Default destructor called!" << NONE << std::endl;
+	std::cout << RED << "AMateria class Default destructor called!" << NONE << std::endl;
 }
 
 std::string const&	AMateria::getType() const {
@@ -40,5 +40,5 @@ std::string const&	AMateria::getType() const {
 }
 
 void		AMateria::use(ICharacter& target) {
-	std::cout << "AMateria " << _type << " used on " << target.getName() << "!" << std::endl;
+	std::cout << BLUE << "AMateria " << _type << " used on " << target.getName() << "!" << NONE << std::endl;
 }

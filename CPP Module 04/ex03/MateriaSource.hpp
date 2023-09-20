@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:53:04 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 15:44:40 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:26:55 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource& operator=(const MateriaSource& source);
 		virtual ~MateriaSource();
 
-		virtual void learnMateria(AMateria*);
+		virtual void learnMateria(AMateria* m);
 		virtual AMateria* createMateria(std::string const& type);
 };
 

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:52:32 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/19 15:36:00 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:45:24 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Ice&	Ice::operator=(const Ice& source) {
 }
 
 Ice::~Ice() {
-	std::cout << GREEN << "Ice class Default destructor called!" << NONE << std::endl;
+	std::cout << RED << "Ice class Default destructor called!" << NONE << std::endl;
 }
 
 AMateria*	Ice::clone() const {
