@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:52:35 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/20 16:45:03 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:12:51 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int main()
 	std::cout << std::endl;
 	{
 		std::cout << "learnMateria() function tests:" << std::endl;
+		
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
 		
 		std::cout << std::endl << "equip() function tests:" << std::endl;
+		
 		ICharacter* me = new Character("me");
 		
 		AMateria* tmp;
@@ -35,6 +37,7 @@ int main()
 		me->equip(tmp);
 		
 		std::cout << std::endl << "use() function tests:" << std::endl;
+		
 		ICharacter* bob = new Character("bob");
 		
 		me->use(0, *bob);
@@ -50,52 +53,74 @@ int main()
 	std::cout << YELLOW << "+--------+ CHARACTER CLASS TESTS +--------+" << NONE << std::endl;
 	std::cout << std::endl;
 	{
-		IMateriaSource*	materia = new MateriaSource();
+		IMateriaSource*	src = new MateriaSource();
 		
-		materia->learnMateria(new Ice());
-		materia->learnMateria(new Cure());
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
 
 		std::cout << std::endl << "equip() function tests:" << std::endl;
 		
-		ICharacter*		characterTest = new Character("characterTest");
+		ICharacter*		me = new Character("me");
 		AMateria*		tmp[5];
 		
-		tmp[0] = materia->createMateria("ice");
-		characterTest->equip(tmp[0]);
-		tmp[1] = materia->createMateria("cure");
-		characterTest->equip(tmp[1]);
-		tmp[2] = materia->createMateria("ice");
-		characterTest->equip(tmp[2]);
-		tmp[3] = materia->createMateria("cure");
-		characterTest->equip(tmp[3]);
-		tmp[4] = materia->createMateria("ice");
-		characterTest->equip(tmp[4]);
+		for (int i = 0; i < 5; i++) {
+			if (i % 2 == 0)
+				tmp[i] = src->createMateria("ice");
+			else
+				tmp[i] = src->createMateria("cure");
+			me->equip(tmp[i]);
+		}
 		
 		std::cout << std::endl << "use() function tests:" << std::endl;
 		
 		ICharacter*		bob = new Character("bob");
 
-		characterTest->use(0, *bob);
-		characterTest->use(1, *bob);
-		characterTest->use(2, *bob);
-		characterTest->use(3, *bob);
-		characterTest->use(4, *bob);
+		for (int i = 0; i < 5; i++)
+			me->use(i, *bob);
 
 		std::cout << std::endl << "unequip() function tests:" << std::endl;
 
-		characterTest->unequip(0);
-		characterTest->unequip(1);
-		characterTest->unequip(2);
-		characterTest->unequip(3);
-		characterTest->unequip(4);
+		for (int i = 0; i < 5; i++)
+			me->unequip(i);
 		
 		std::cout << std::endl;
 		
 		for (int i = 0; i < 4; i++)
 			delete tmp[i];
 		delete bob;
-		delete characterTest;
-		delete materia;
+		delete me;
+		delete src;
+	}
+	std::cout << std::endl;
+	std::cout << YELLOW << "+--------+ MATERIASOURCE CLASS TESTS +--------+" << NONE << std::endl;
+	std::cout << std::endl;
+	{
+		std::cout << "learnMateria() function tests:" << std::endl;
+		
+		IMateriaSource*	src = new MateriaSource();
+		AMateria*		ice = new Ice();
+		
+		for (int i = 0; i < 4; i++) {
+			if (i % 2 == 0)
+				src->learnMateria(new Ice());
+			else
+				src->learnMateria(new Cure());
+		}
+		src->learnMateria(ice);
+		
+		std::cout << std::endl << "createMateria() function tests:" << std::endl;
+		
+		AMateria*	tmp[5];
+		
+		for (int i = 0; i < 5; i++)
+			tmp[i] = src->createMateria("cure");
+
+		std::cout << std::endl;
+
+		for (int i = 0; i < 5; i++)
+			delete tmp[i];
+		delete ice;
+		delete src;
 	}
 	return 0;
 }

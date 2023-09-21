@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/20 16:46:00 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:26:42 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
-			std::cout << BLUE << "Character " << _name << " equips the Materia at slot " << i << "!" << NONE << std::endl;
+			std::cout << BLUE << "Character " << _name << " equips the " << _inventory[i]->getType() << " Materia at slot " << i << "!" << NONE << std::endl;
 			return ;
 		}
 	}
@@ -62,18 +62,14 @@ void	Character::equip(AMateria* m) {
 
 void	Character::unequip(int idx) {
 	if (idx < 4 && _inventory[idx] != NULL) {
+		std::cout << BLUE << "Character " << _name << " unequips the " << _inventory[idx]->getType() << " Materia at slot " << idx << "!" << NONE << std::endl;
 		_inventory[idx] = NULL;
-		std::cout << BLUE << "Character " << _name << " unequips the Materia at slot " << idx << "!" << NONE << std::endl;
 	}
 	else
 		std::cout << RED << "Character " << _name << " cannot unequip this Materia!" << NONE << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if (idx < 4 && _inventory[idx] != NULL) {
+	if (idx < 4 && _inventory[idx] != NULL)
 		_inventory[idx]->use(target);
-		std::cout << BLUE << "Character " << _name << " use " << _inventory[idx]->getType() << " on " << target.getName() << NONE << std::endl;
-	}
-	else
-		std::cout << RED << "Character " << _name << " cannot use this type of Materia on " << target.getName() << NONE << std::endl;
 }
