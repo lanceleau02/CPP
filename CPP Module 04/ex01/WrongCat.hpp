@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/12 11:26:27 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:29:50 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 #include "WrongAnimal.hpp"
 
-class WrongCat : public virtual WrongAnimal {
-	private:
-
+class WrongCat : public WrongAnimal {
 	public:
 		WrongCat();
 		WrongCat(const WrongCat& source);

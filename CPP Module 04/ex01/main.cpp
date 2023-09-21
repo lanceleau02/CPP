@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:09:54 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:27:41 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:36:53 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main() {
 		const int	ideaNumber = 10;
 
 		std::cout << std::endl;
-		Einstein.getBrain()->setIdea(ideaNumber, "2.21 Gigawatts !?");
+		Einstein.getBrain()->setIdea(ideaNumber, "1.21 Gigawatts!?");
 		std::cout << BLUE << "Here's the Beethoven's idea number " << ideaNumber << ": " << NONE << Beethoven.getBrain()->getIdea(ideaNumber) << std::endl;
 		std::cout << BLUE << "Here's the Einstein's idea number " << ideaNumber << ": " << NONE << Einstein.getBrain()->getIdea(ideaNumber) << std::endl;
 		std::cout << std::endl;
