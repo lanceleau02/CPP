@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:55:00 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/20 09:26:40 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:08:46 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ AMateria* MateriaSource::createMateria(std::string const& type) {
 	for (int i = 0; i < 4; i++)
 		if (_materias[i] != NULL && _materias[i]->getType() == type)
 			return (_materias[i]->clone());
-	return NULL;
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:05:03 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/20 09:07:50 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 10:55:48 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ AMateria::AMateria(const AMateria& source) {
 
 AMateria&	AMateria::operator=(const AMateria& source) {
 	std::cout << GREEN << "AMateria class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	(void)source;
 	return *this;
 }
 

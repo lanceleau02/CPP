@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/21 10:26:42 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:05:38 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ Character::Character(const Character& source) {
 
 Character&	Character::operator=(const Character& source) {
 	std::cout << GREEN << "Character class Assignment operator called!" << NONE << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++) {
+		delete _inventory[i];
 		_inventory[i] = source._inventory[i];
+	}
 	_name = source._name;
 	return *this;
 }
@@ -40,8 +42,7 @@ Character&	Character::operator=(const Character& source) {
 Character::~Character() {
 	std::cout << RED << "Character class Default destructor called!" << NONE << std::endl;
 	for (int i = 0; i < 4; i++)
-		if (_inventory[i] != NULL)
-			delete _inventory[i];
+		delete _inventory[i];
 }
 
 std::string const&	Character::getName() const {
