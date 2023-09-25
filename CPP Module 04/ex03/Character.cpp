@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/25 14:21:22 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:48:32 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ std::string const&	Character::getName() const {
 
 void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (_inventory[i] == NULL) {
+		if (_inventory[i] == m)
+			return ;
+		else if (_inventory[i] == NULL) {
 			_inventory[i] = m;
 			std::cout << BLUE << "Character " << _name << " equips the " << _inventory[i]->getType() << " Materia at slot " << i << "!" << NONE << std::endl;
 			return ;

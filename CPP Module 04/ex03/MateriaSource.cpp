@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:55:00 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/25 14:19:35 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:40:01 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ MateriaSource::MateriaSource(const MateriaSource& source) {
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& source) {
 	std::cout << GREEN << "MateriaSource class Assignment operator called!" << NONE << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++) {
+		delete _materias[i];
 		_materias[i] = source._materias[i];
+	}
 	return *this;
 }
 
