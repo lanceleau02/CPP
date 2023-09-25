@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/21 11:27:25 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:17:42 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Animal.hpp"
 
-class Cat : public virtual Animal {
+class Cat : public Animal {
 	public:
 		Cat();
 		Cat(const Cat& source);

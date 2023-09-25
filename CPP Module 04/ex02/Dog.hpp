@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:54:31 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:19:13 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public virtual AAnimal {
+class Dog : public AAnimal {
 	private:
 		Brain*	_brain;
 	

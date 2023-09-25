@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:22:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:05 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:18:02 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Cat : public virtual Animal {
+class Cat : public Animal {
 	private:
 		Brain*	_brain;
 
