@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/25 11:05:38 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:21:22 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	Character::equip(AMateria* m) {
 		}
 	}
 	std::cout << RED << "Character " << _name << " cannot equip this Materia!" << NONE << std::endl;
-	delete m;
 }
 
 void	Character::unequip(int idx) {

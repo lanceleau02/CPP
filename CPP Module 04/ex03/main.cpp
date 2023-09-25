@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:52:35 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/21 10:12:51 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:20:31 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int main()
 		
 		std::cout << std::endl;
 		
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 			delete tmp[i];
 		delete bob;
 		delete me;

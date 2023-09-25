@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:55:00 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/25 11:08:46 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:19:35 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& source) {
 MateriaSource::~MateriaSource() {
 	std::cout << RED << "MateriaSource class Default destructor called!" << NONE << std::endl;
 	for (int i = 0; i < 4; i++)
-		if (_materias[i] != NULL)
-			delete _materias[i];
+		delete _materias[i];
 }
 
 void MateriaSource::learnMateria(AMateria* m) {
