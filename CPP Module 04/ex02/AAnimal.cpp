@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/25 16:37:36 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:25:18 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ AAnimal::AAnimal(const AAnimal& source) {
 
 AAnimal&	AAnimal::operator=(const AAnimal& source) {
 	std::cout << GREEN << "AAnimal class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	if (this != &source)
+		_type = source._type;
 	return *this;
 }
 

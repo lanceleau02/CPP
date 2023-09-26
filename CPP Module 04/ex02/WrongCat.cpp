@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/12 11:39:26 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:26:32 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ WrongCat::WrongCat(const WrongCat& source) : WrongAnimal(source) {
 
 WrongCat&	WrongCat::operator=(const WrongCat& source) {
 	std::cout << GREEN << "WrongCat class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	if (this != &source)
+		_type = source._type;
 	return *this;
 }
 

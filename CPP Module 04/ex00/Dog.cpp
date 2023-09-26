@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/12 09:42:44 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:21:04 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ Dog::Dog(const Dog& source) : Animal(source) {
 
 Dog&	Dog::operator=(const Dog& source) {
 	std::cout << GREEN << "Dog class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	if (this != &source)
+		_type = source._type;
 	return *this;
 }
 

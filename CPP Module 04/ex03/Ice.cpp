@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:52:32 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/20 11:45:24 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:17:05 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ Ice::Ice(const Ice& source) : AMateria(source) {
 
 Ice&	Ice::operator=(const Ice& source) {
 	std::cout << GREEN << "Ice class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	if (this != &source)
+		_type = source._type;
 	return *this;
 }
 

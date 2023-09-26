@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:54:43 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:25:57 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ Cat::Cat(const Cat& source) : AAnimal(source) {
 
 Cat&	Cat::operator=(const Cat& source) {
 	std::cout << GREEN << "Cat class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
-	*_brain = *source._brain;
+	if (this != &source) {
+		_type = source._type;
+		*_brain = *source._brain;
+	}
 	return *this;
 }
 

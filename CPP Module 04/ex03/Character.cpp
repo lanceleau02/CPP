@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:20:18 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/25 16:48:32 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:16:54 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ Character::Character(const Character& source) {
 
 Character&	Character::operator=(const Character& source) {
 	std::cout << GREEN << "Character class Assignment operator called!" << NONE << std::endl;
-	for (int i = 0; i < 4; i++) {
-		delete _inventory[i];
-		_inventory[i] = source._inventory[i];
+	if (this != &source) {
+		for (int i = 0; i < 4; i++) {
+			delete _inventory[i];
+			_inventory[i] = source._inventory[i];
+		}
+		_name = source._name;
 	}
-	_name = source._name;
 	return *this;
 }
 
@@ -51,9 +53,13 @@ std::string const&	Character::getName() const {
 
 void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (_inventory[i] == m)
+		if (_inventory[i] == m) {
+			std::cout << RED << "Character " << _name << " has already equiped " << _inventory[i]->getType() << " Materia at slot " << i << "!" << NONE << std::endl;
 			return ;
-		else if (_inventory[i] == NULL) {
+		}
+	}
+	for (int i = 0; i < 4; i++) {
+		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
 			std::cout << BLUE << "Character " << _name << " equips the " << _inventory[i]->getType() << " Materia at slot " << i << "!" << NONE << std::endl;
 			return ;

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:15:15 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:54 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:22:32 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ Brain::Brain(const Brain& source) {
 
 Brain&	Brain::operator=(const Brain& source) {
 	std::cout << GREEN << "Brain class Assignment operator called!" << NONE << std::endl;
-	for (int i = 0; i < 100; i++)
-		_ideas[i] = source._ideas[i];
+	if (this != &source) {
+		for (int i = 0; i < 100; i++)
+			_ideas[i] = source._ideas[i];
+	}
 	return *this;
 }
 

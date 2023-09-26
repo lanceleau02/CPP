@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:36:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/12 11:19:54 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:23:34 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ WrongAnimal::WrongAnimal(const WrongAnimal& source) {
 
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& source) {
 	std::cout << GREEN << "WrongAnimal class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	if (this != &source)
+		_type = source._type;
 	return *this;
 }
 

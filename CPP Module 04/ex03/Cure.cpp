@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:18:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/09/20 09:07:37 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:17:00 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ Cure::Cure(const Cure& source) : AMateria(source) {
 
 Cure&	Cure::operator=(const Cure& source) {
 	std::cout << GREEN << "Cure class Assignment operator called!" << NONE << std::endl;
-	_type = source._type;
+	if (this != &source)
+		_type = source._type;
 	return *this;
 }
 
