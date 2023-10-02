@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:04:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/02 14:55:06 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:46:54 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void	Bureaucrat::decrementGrade() {
 		return ;
 	}
 	throw Bureaucrat::GradeTooLowException();
+}
+
+void	Bureaucrat::signForm(const Form& form) const {
+	if (form._signed == true)
+		std::cout << _name << " signed " << form._name << "." << std::endl;
+	else if (form._signed == false)
+		std::cout << _name << " couldn't sign " << form._name << " because his grade is " << _grade << " and the required grade is " << _gradeToSign << "." << std::endl;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw() {
