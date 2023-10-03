@@ -6,7 +6,7 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 13:59:24 by laprieur          #+#    #+#              #
-#    Updated: 2023/10/02 14:23:12 by laprieur         ###   ########.fr        #
+#    Updated: 2023/10/03 10:27:41 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME			:=	ex01
 
 SRC				:=	main.cpp			\
 					Bureaucrat.cpp		\
-					Form.hpp			\
+					Form.cpp			\
 					
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)

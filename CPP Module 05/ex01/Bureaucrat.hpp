@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:03:28 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/02 16:41:39 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:20:24 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Bureaucrat {
 		const unsigned int&	getGrade() const;
 		void				incrementGrade();
 		void				decrementGrade();
-		void				signForm(const Form& form) const;
+		void				signForm(Form& form) const;
 		
 		class GradeTooHighException : public std::exception {
 			public:

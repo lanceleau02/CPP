@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:33:40 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/02 16:49:47 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:49:29 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ const unsigned int&	Form::getGradeToExecute() const {
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
-	if (bureaucrat._grade <= _gradeToSign) {
+	if (bureaucrat.getGrade() <= _gradeToSign)
 		_signed = true;
-		bureaucrat.signForm();
-	}
 	else
-		throw Bureaucrat::GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 		
 const char*	Form::GradeTooHighException::what() const throw() {
@@ -61,9 +59,9 @@ const char*	Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form& form) {
-	if (_signed == false)
-		os << "Form " << _name << " is not signed. Grade required to sign it: " << _gradeToSign << ", grade required to execute it: " << _gradeToExecute << "." << std::endl;
-	else if (_signed == true)
-		os << "Form " << _name << " is signed. Grade required to sign it: " << _gradeToSign << ", grade required to execute it: " << _gradeToExecute << "." << std::endl;
+	if (form.getSigned() == false)
+		os << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+	else if (form.getSigned() == true)
+		os << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
 	return os;
 }
