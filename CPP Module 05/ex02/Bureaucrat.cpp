@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:04:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 15:55:16 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:46:30 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,23 @@ void	Bureaucrat::decrementGrade() {
 	throw Bureaucrat::GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(Form& form) const {
+void	Bureaucrat::signForm(AForm& form) const {
 	try {
 		form.beSigned(*this);
 		std::cout << GREEN << _name << " signed " << form.getName() << "." << NONE << std::endl;
 	}
 	catch (std::exception& e) {
-		std::cout << RED << _name << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
+		std::cout << RED << _name << " couldn't sign " << form.getName() << " because " << e.what() << NONE << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(const AForm& form) {
+	try {
+		form.execute(*this);
+		std::cout << GREEN << _name << " executed " << form.getName() << "." << NONE << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cout << RED << _name << " couldn't execute " << form.getName() << " because " << e.what() << NONE << std::endl;
 	}
 }
 

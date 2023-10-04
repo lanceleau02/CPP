@@ -6,16 +6,18 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:47:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 18:03:39 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:49:58 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+#include <cstdlib>
+
 #include "AForm.hpp"
 
-class RobotomyRequestForm : AForm {
+class RobotomyRequestForm : public AForm {
 	private:
 		RobotomyRequestForm();
 	
@@ -26,6 +28,7 @@ class RobotomyRequestForm : AForm {
 		~RobotomyRequestForm();
 
 		void	RobotomyRequest() const;
-}
+		void	execute(const Bureaucrat& executor) const;
+};
 
 #endif

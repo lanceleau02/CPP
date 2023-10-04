@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:04:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 15:55:16 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:48:15 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	Bureaucrat::signForm(Form& form) const {
 		std::cout << GREEN << _name << " signed " << form.getName() << "." << NONE << std::endl;
 	}
 	catch (std::exception& e) {
-		std::cout << RED << _name << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
+		std::cout << RED << _name << " couldn't sign " << form.getName() << " because " << e.what() << "." << NONE << std::endl;
 	}
 }
 

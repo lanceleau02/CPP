@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:23:55 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 17:00:25 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:57:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,20 @@ class AForm {
 		const unsigned int	_gradeToSign;
 		const unsigned int	_gradeToExecute;
 
-		Form();
+		AForm();
 
 	public:
-		Form(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute);
-		Form(const Form& source);
-		Form&	operator=(const Form& source);
-		virtual ~Form();
+		AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute);
+		AForm(const AForm& source);
+		AForm&	operator=(const AForm& source);
+		virtual ~AForm();
 		
 		const std::string&	getName() const;
 		const bool&			getSigned() const;
 		const unsigned int&	getGradeToSign() const;
 		const unsigned int&	getGradeToExecute() const;
-		virtual void		beSigned(const Bureaucrat& bureaucrat) = 0;
+		void				beSigned(const Bureaucrat& bureaucrat);
+		virtual void		execute(const Bureaucrat& executor) const = 0;
 		
 		class GradeTooHighException : public std::exception {
 			public:
@@ -52,6 +53,6 @@ class AForm {
 		};
 };
 
-std::ostream&	operator<<(std::ostream& os, const Form& form);
+std::ostream&	operator<<(std::ostream& os, const AForm& form);
 
 #endif

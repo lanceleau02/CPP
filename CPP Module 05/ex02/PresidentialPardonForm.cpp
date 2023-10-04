@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:04:08 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 18:06:00 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:00:51 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,11 @@ PresidentialPardonForm::~PresidentialPardonForm() {}
 
 void	PresidentialPardonForm::PresidentialPardon() const {
 	std::cout << _name << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+}
+
+void	PresidentialPardonForm::execute(const Bureaucrat& executor) const {
+	if (_signed == true && executor.getGrade() <= _gradeToExecute)
+		this->PresidentialPardon();
+	else
+		throw Bureaucrat::GradeTooLowException();
 }

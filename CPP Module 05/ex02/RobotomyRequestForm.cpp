@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:50:45 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 18:00:18 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:01:00 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,11 @@ void	RobotomyRequestForm::RobotomyRequest() const {
 		std::cout << _name << " has been robotomized." << std::endl;
 	else
 		std::cout << "The robotomy failed." << std::endl;
+}
+
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+	if (_signed == true && executor.getGrade() <= _gradeToExecute)
+		this->RobotomyRequest();
+	else
+		throw Bureaucrat::GradeTooLowException();
 }

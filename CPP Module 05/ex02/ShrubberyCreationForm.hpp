@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:02:17 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 18:03:48 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:28:48 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 		
 		void	ShrubberyCreation() const;
+		void	execute(const Bureaucrat& executor) const;
 };
 
 

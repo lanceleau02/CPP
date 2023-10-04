@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:03:28 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 11:20:24 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:57:28 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 #define BLUE	"\033[34m"
 #define NONE	"\033[0m"
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -44,7 +44,8 @@ class Bureaucrat {
 		const unsigned int&	getGrade() const;
 		void				incrementGrade();
 		void				decrementGrade();
-		void				signForm(Form& form) const;
+		void				signForm(AForm& form) const;
+		void				executeForm(const AForm& form);
 		
 		class GradeTooHighException : public std::exception {
 			public:

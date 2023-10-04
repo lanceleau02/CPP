@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:01:35 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 18:03:56 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:36:40 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class PresidentialPardonForm : public AForm {
 		~PresidentialPardonForm();
 
 		void	PresidentialPardon() const;
+		void	execute(const Bureaucrat& executor) const;
 };
 
 #endif
