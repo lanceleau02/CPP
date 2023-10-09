@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:23:55 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/04 11:57:03 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:10:22 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ class AForm {
 		};
 		
 		class GradeTooLowException : public std::exception {
+			public:
+    			virtual const char* what() const throw();
+		};
+		
+		class FormNotSignedException : public std::exception {
 			public:
     			virtual const char* what() const throw();
 		};

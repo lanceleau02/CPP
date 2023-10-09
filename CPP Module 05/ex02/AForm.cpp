@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:58:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 17:00:01 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:30:39 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,14 @@ const char*	AForm::GradeTooLowException::what() const throw() {
 	return ("Grade too low!");
 }
 
+const char*	AForm::FormNotSignedException::what() const throw() {
+	return ("Form not signed!");
+}
+
 std::ostream&	operator<<(std::ostream& os, const AForm& form) {
 	if (form.getSigned() == false)
-		os << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+		os << BLUE << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << NONE << std::endl;
 	else if (form.getSigned() == true)
-		os << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+		os << BLUE << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << NONE << std::endl;
 	return os;
 }

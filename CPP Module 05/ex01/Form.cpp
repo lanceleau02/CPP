@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:33:40 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/03 15:49:29 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:41:00 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ const char*	Form::GradeTooLowException::what() const throw() {
 
 std::ostream&	operator<<(std::ostream& os, const Form& form) {
 	if (form.getSigned() == false)
-		os << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+		os << BLUE << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << NONE << std::endl;
 	else if (form.getSigned() == true)
-		os << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+		os << BLUE << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << NONE << std::endl;
 	return os;
 }

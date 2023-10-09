@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:03:16 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/04 14:59:12 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:25:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,53 @@ int	main(void) {
 	std::cout << std::endl;
 	{	
 		{
-			std::cout << "Test: the bureaucrat can sign and execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat can sign and execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 75);
-			ShrubberyCreationForm	form("ShrubberyForm");
+			ShrubberyCreationForm	form("ShrubberyCreation");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;
 		{
-			std::cout << "Test: the bureaucrat can sign but not execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat can sign but not execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 140);
-			ShrubberyCreationForm	form("ShrubberyForm");
+			ShrubberyCreationForm	form("ShrubberyCreation");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;
 		{
-			std::cout << "Test: the bureaucrat cannot sign and execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat cannot sign and execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 146);
-			ShrubberyCreationForm	form("ShrubberyForm");
+			ShrubberyCreationForm	form("ShrubberyCreation");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
+			bureaucrat.executeForm(form);
+		}
+		std::cout << std::endl;
+		{
+			std::cout << "The Bureaucrat cannot execute the Form because it's not signed:" << std::endl << std::endl;
+			
+			Bureaucrat				bureaucrat("Bob", 1);
+			ShrubberyCreationForm	form("ShrubberyCreation");
+
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
+			
 			bureaucrat.executeForm(form);
 		}
 	}
@@ -66,44 +75,53 @@ int	main(void) {
 	std::cout << std::endl;
 	{
 		{
-			std::cout << "Test: the bureaucrat can sign and execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat can sign and execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 40);
-			RobotomyRequestForm		form("RobotomyForm");
+			RobotomyRequestForm		form("RobotomyRequest");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;
 		{
-			std::cout << "Test: the bureaucrat can sign but not execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat can sign but not execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 46);
-			RobotomyRequestForm		form("RobotomyForm");
+			RobotomyRequestForm		form("RobotomyRequest");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;
 		{
-			std::cout << "Test: the bureaucrat cannot sign and execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat cannot sign and execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 73);
-			RobotomyRequestForm		form("RobotomyForm");
+			RobotomyRequestForm		form("RobotomyRequest");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
+			bureaucrat.executeForm(form);
+		}
+		std::cout << std::endl;
+		{
+			std::cout << "The Bureaucrat cannot execute the Form because it's not signed:" << std::endl << std::endl;
+			
+			Bureaucrat				bureaucrat("Bob", 1);
+			RobotomyRequestForm		form("RobotomyRequest");
+
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
+			
 			bureaucrat.executeForm(form);
 		}
 	}
@@ -112,44 +130,53 @@ int	main(void) {
 	std::cout << std::endl;
 	{
 		{
-			std::cout << "Test: the bureaucrat can sign and execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat can sign and execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 1);
-			PresidentialPardonForm	form("PresidentialForm");
+			PresidentialPardonForm	form("PresidentialPardon");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;
 		{
-			std::cout << "Test: the bureaucrat can sign but not execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat can sign but not execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 10);
-			PresidentialPardonForm	form("PresidentialForm");
+			PresidentialPardonForm	form("PresidentialPardon");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;
 		{
-			std::cout << "Test: the bureaucrat cannot sign and execute the form." << std::endl << std::endl;
+			std::cout << "The Bureaucrat cannot sign and execute the Form:" << std::endl << std::endl;
 			
 			Bureaucrat				bureaucrat("Bob", 26);
-			PresidentialPardonForm	form("PresidentialForm");
+			PresidentialPardonForm	form("PresidentialPardon");
 
-			std::cout
-				<< BLUE << bureaucrat
-				<< BLUE << form << NONE << std::endl;
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
+			bureaucrat.executeForm(form);
+		}
+		std::cout << std::endl;
+		{
+			std::cout << "The Bureaucrat cannot execute the Form because it's not signed:" << std::endl << std::endl;
+			
+			Bureaucrat				bureaucrat("Bob", 1);
+			PresidentialPardonForm	form("PresidentialPardon");
+
+			std::cout << bureaucrat;
+			std::cout << form << std::endl;
+			
 			bureaucrat.executeForm(form);
 		}
 	}

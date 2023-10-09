@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:31:22 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/06 10:53:17 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:43:57 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,35 @@ AForm*	Intern::searchAndCreateForm(const std::string& formName, const std::strin
 	std::string		formNames[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
 	int				i;
 	
+	if (formName.empty() || formTarget.empty()) {
+		std::cerr << RED << "Intern can't create a form without a form name or target!" << NONE << std::endl;
+		return NULL;
+	}
 	for (i = 0; i < 3; i++)
 		if (formNames[i] == formName)
 			break ;
 	switch (i) {
 		case 0:
+			std::cout << GREEN << "Intern creates " << formName << "." << NONE << std::endl;
 			return (new ShrubberyCreationForm(formTarget));
 		case 1:
+			std::cout << GREEN << "Intern creates " << formName << "." << NONE << std::endl;
 			return (new RobotomyRequestForm(formTarget));
 		case 2:
+			std::cout << GREEN << "Intern creates " << formName << "." << NONE << std::endl;
 			return (new PresidentialPardonForm(formTarget));
-		throw Intern::InvalidFormException();
+		default:
+			throw Intern::InvalidFormException();
 	}
+	return NULL;
 }
 
 AForm*	Intern::makeForm(const std::string& formName, const std::string& formTarget) {
 	try {
-		std::cout << "Intern creates " << formName << "." << std::endl;
 		return (searchAndCreateForm(formName, formTarget));
 	}
 	catch (std::exception& e) {
-		std::cout << e.what() << formName << "." << std::endl;
+		std::cerr << RED << e.what() << formName << "." << NONE << std::endl;
 		return NULL;
 	}
 }
