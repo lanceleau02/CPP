@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:03:16 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/09 14:25:03 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:28:06 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,17 @@ int	main(void) {
 			std::cout << form << std::endl;
 			
 			bureaucrat.signForm(form);
+			std::cout << std::endl;
+			bureaucrat.executeForm(form);
+			std::cout << std::endl;
+			bureaucrat.executeForm(form);
+			std::cout << std::endl;
+			bureaucrat.executeForm(form);
+			std::cout << std::endl;
+			bureaucrat.executeForm(form);
+			std::cout << std::endl;
+			bureaucrat.executeForm(form);
+			std::cout << std::endl;
 			bureaucrat.executeForm(form);
 		}
 		std::cout << std::endl;

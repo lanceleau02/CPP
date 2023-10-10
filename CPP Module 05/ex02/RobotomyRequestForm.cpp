@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:50:45 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/09 14:30:12 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:26:14 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void	RobotomyRequestForm::RobotomyRequest() const {
+	static int	rand;
+	
 	std::cout << BLUE << "* Makes some drilling noises. *" << NONE << std::endl;
-	if (rand() % 2 == 0)
+	if (rand++ % 2 == 0)
 		std::cout << GREEN << _name << " has been robotomized." << NONE << std::endl;
 	else
 		std::cout << RED << "The robotomy failed." << NONE << std::endl;
