@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:49:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/10 14:04:29 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:57:09 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 
 #include <iostream>
 #include <string>
-#include <cctype>
-#include <sstream>
+#include <cstdlib>
 #include <climits>
 #include <cfloat>
-#include <cstring>
-#include <cstdlib>
-#include <limits>
 
 class ScalarConverter {
 	public:
@@ -33,6 +29,6 @@ class ScalarConverter {
 		static void	convert(const std::string& input);
 };
 
-bool	isChar(const std::string& input) const;
+void	display(char charValue);
 
 #endif
