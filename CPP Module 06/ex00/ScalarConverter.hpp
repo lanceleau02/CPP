@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:49:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/10 16:57:09 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:26:29 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,27 @@
 #include <cstdlib>
 #include <climits>
 #include <cfloat>
+#include <regex.h>
+
+enum Type {
+	ERROR,
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE
+};
 
 class ScalarConverter {
-	public:
+	private:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& source);
 		ScalarConverter&	operator=(const ScalarConverter& source);
 		~ScalarConverter();
-
+	
+	public:
 		static void	convert(const std::string& input);
 };
 
-void	display(char charValue);
+bool	isRound(float value);
 
 #endif

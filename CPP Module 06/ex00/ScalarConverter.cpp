@@ -6,66 +6,40 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:01:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/10 17:23:08 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:42:51 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {}
+bool	searchPattern(const char* pattern, std::string input) {
+	regex_t		regex;
+	regmatch_t	match;
 
-ScalarConverter::ScalarConverter(const ScalarConverter& source) {
-	*this = source;
-}
-
-ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& source) {
-	(void)source;
-	return *this;
-}
-
-ScalarConverter::~ScalarConverter() {}
-
-bool isRound(float value) {
-    int intValue = static_cast<int>(value); // Convert to integer
-    return value == static_cast<float>(intValue); // Compare to original value
+	if (regcomp(&regex, pattern, REG_EXTENDED) != 0)
+        return false;
+    else if (regexec(&regex, input.c_str(), 1, &match, 0) == 0) {
+		regfree(&regex);
+		return true;
+	}
+	regfree(&regex);
+	return false;
 }
 
 void	ScalarConverter::convert(const std::string& input) {
-	char	charValue;
-	int 	intValue = atoi(input.c_str());
-	float 	floatValue;
-	
-	/* CHAR PART */
-	
-	charValue = static_cast<char>(intValue);
-	std::cout << "char: ";
-	if (intValue < 0 || intValue > 255)
-		std::cout << "impossible" << std::endl;
-	else if (isprint(intValue) == 0)
-		std::cout << "Non displayable" << std::endl;
+	if (searchPattern("^[+-]?[0-9]*$", input) == true)
+		std::cout << "Ceci est un int" << std::endl;
+	else if (searchPattern("^[+-]?[0-9]+\\.{1}[0-9]+f$", input) == true)
+		std::cout << "Ceci est un float" << std::endl;
+	else if (searchPattern("^[+-]?[0-9]+\\.{1}[0-9]+$", input) == true)
+		std::cout << "Ceci est un double" << std::endl;
+	else if (searchPattern("^[ -~]$", input) == true)
+		std::cout << "Ceci est un char" << std::endl;
 	else
-		std::cout << charValue << std::endl;
-	
-	/* INT PART */
-	
-	std::cout << "int: ";
-	if (intValue < INT_MIN || intValue > INT_MAX)
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << intValue << std::endl;
-	
-	/* FLOAT PART */
-	
-	std::cout << "float: ";
-	floatValue = strtof(input.c_str(), NULL);
-	if (floatValue < FLT_MIN - 1e-6 || floatValue > FLT_MAX)
-		std::cout << "impossible" << std::endl;
-	else if (isRound(floatValue))
-		std::cout << floatValue << ".0f" << std::endl;
-	else
-		std::cout << floatValue << "f" << std::endl;
+		std::cout << "Ceci est une erreur" << std::endl;
 }
 
-/* void	display(char charValue) {
-	
-} */
+bool	isRound(float value) {
+    int intValue = static_cast<int>(value); 
+    return value == static_cast<float>(intValue);
+}
