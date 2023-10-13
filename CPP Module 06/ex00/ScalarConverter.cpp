@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:01:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 16:03:53 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:32:58 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,15 @@ void	ScalarConverter::convert(std::string input) {
 		display();
 		return ;
 	}
-	switch (i) {
-		case 6:
-			toChar();
-			break ;
-		case 7:
-			toInt();
-			break ;
-		case 8:
-			toFloat();
-			break ;
-		case 9:
-			toDouble();
-			break ;
-		default:
-			std::cout << "Error: invalid input" << std::endl;
-			return ;
-	}
+	if (i == 6)
+		toChar();
+	else if (i == 7)
+		toInt();
+	else if (i == 8)
+		toFloat();
+	else if (i == 9)
+		toDouble();
+	else 
+		std::cout << "Error: invalid input" << std::endl;
 	display();
 }

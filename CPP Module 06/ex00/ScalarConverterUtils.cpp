@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:09:09 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 16:05:29 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:30:36 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ bool	verifyValue(std::string input, int mode) {
 
 bool	isPseudoLiteral(std::string input) {
 	if (input == "-inff" || input == "+inff" || input == "nanf"
-		|| input == "-inf" || input == "+inf" || input == "nan") {
-		std::cout << "oui" << std::endl;
+		|| input == "-inf" || input == "+inf" || input == "nan")
 		return true;
-	}
 	return false;
 }
 
