@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:09:09 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 14:28:26 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:05:29 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,22 @@ bool	searchPattern(const char* pattern, std::string input) {
 	return false;
 }
 
+bool	verifyValue(std::string input, int mode) {
+	if (mode == 0 && (atol(input.c_str()) < INT_MIN || atol(input.c_str()) > INT_MAX))
+		return false;
+	else if (mode == 1 && (strtod(input.c_str(), NULL) < FLT_MIN - 1e-6 || strtod(input.c_str(), NULL) > FLT_MAX))
+		return false;
+	else if (mode == 2 && (strtold(input.c_str(), NULL) < DBL_MIN - 1e-6 || strtold(input.c_str(), NULL) > DBL_MAX))
+		return false;
+	return true;
+}
+
 bool	isPseudoLiteral(std::string input) {
 	if (input == "-inff" || input == "+inff" || input == "nanf"
-		|| input == "-inf" || input == "+inf" || input == "nan")
+		|| input == "-inf" || input == "+inf" || input == "nan") {
+		std::cout << "oui" << std::endl;
 		return true;
+	}
 	return false;
 }
 
@@ -45,7 +57,7 @@ void	displayChar(std::string input, char charValue) {
 
 void	displayInt(std::string input, int intValue) {
 	std::cout << "int: ";
-	if (intValue < INT_MIN || intValue > INT_MAX || isPseudoLiteral(input))
+	if (verifyValue(input, 0) == false || isPseudoLiteral(input) == true)
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << intValue << std::endl;
@@ -59,7 +71,7 @@ void	displayFloat(std::string input, float floatValue) {
 		std::cout << "+inff" << std::endl;
 	else if (input == "nanf" || input == "nan")
 		std::cout << "nanf" << std::endl;
-	else if (floatValue < FLT_MIN - 1e-6 || floatValue > FLT_MAX)
+	else if (verifyValue(input, 1) == false)
 		std::cout << "impossible" << std::endl;
 	else if (isRound(floatValue))
 		std::cout << floatValue << ".0f" << std::endl;
@@ -75,7 +87,7 @@ void	displayDouble(std::string input, double doubleValue) {
 		std::cout << "+inf" << std::endl;
 	else if (input == "nanf" || input == "nan")
 		std::cout << "nan" << std::endl;
-	else if (doubleValue < DBL_MIN - 1e-6 || doubleValue > DBL_MAX)
+	else if (verifyValue(input, 2) == false)
 		std::cout << "impossible" << std::endl;
 	else if (isRound(doubleValue))
 		std::cout << doubleValue << ".0" << std::endl;
