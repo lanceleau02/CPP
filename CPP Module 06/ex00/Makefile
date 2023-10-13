@@ -6,7 +6,7 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 13:59:24 by laprieur          #+#    #+#              #
-#    Updated: 2023/10/12 13:23:32 by laprieur         ###   ########.fr        #
+#    Updated: 2023/10/13 12:09:44 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ NAME			:=	convert
 #                                 INGREDIENTS                                  #
 # **************************************************************************** #
 
-SRC				:=	main.cpp			\
-					ScalarConverter.cpp	\
+SRC				:=	main.cpp					\
+					ScalarConverter.cpp			\
+					ScalarConverterUtils.cpp	\
 					
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
