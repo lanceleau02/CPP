@@ -6,7 +6,7 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 13:59:24 by laprieur          #+#    #+#              #
-#    Updated: 2023/10/04 15:21:34 by laprieur         ###   ########.fr        #
+#    Updated: 2023/10/13 10:49:01 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ MAKEFLAGS		+= --silent --no-print-directory
 #                                   RECIPES                                    #
 # **************************************************************************** #
 
-all: header $(NAME)
+all: header trees $(NAME)
 
 $(NAME): $(SRC_OBJS)
 	$(CXX) $(CXXFLAGS) $(SRC_OBJS) $(LDFLAGS) -o $(NAME)
@@ -58,6 +58,7 @@ clean:
 	rm -rf .build
 
 fclean: clean
+	rm -rf trees.txt
 	rm -rf $(NAME)
 
 re:
@@ -87,6 +88,21 @@ header:
 	@printf "%b" "$(CYAN)CXXFlags: $(YELLOW)$(CXXFLAGS)\n"
 	@printf "%b" "$(OFF)"
 	@echo
+
+# **************************************************************************** #
+#                                    TREES                                     #
+# **************************************************************************** #
+
+trees:
+	@echo "       _-_              _-_			" >	trees.txt
+	@echo "    /~~   ~~\        /~~   ~~\		" >> trees.txt
+	@echo " /~~         ~~\  /~~         ~~\	" >> trees.txt
+	@echo "{               }{               }	" >> trees.txt
+	@echo " \  _-     -_  /  \  _-     -_  /	" >> trees.txt
+	@echo "   ~  \   /  ~      ~  \   /  ~		" >> trees.txt
+	@echo "       | |              | |			" >> trees.txt
+	@echo "       | |              | |			" >> trees.txt
+	@echo "      /   \            /   \			" >> trees.txt
 
 # **************************************************************************** #
 #                                   SPECIAL                                    #
