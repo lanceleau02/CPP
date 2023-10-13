@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:49:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 13:42:54 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/13 14:15:40 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ class ScalarConverter {
 		static void	toFloat();
 		static void	toDouble();
 		static void	display();
-		static void	convert();
-		static void	setInput(const std::string& input);
+		static void	convert(std::string input);
 };
 
 bool	isPseudoLiteral(std::string input);
 bool	searchPattern(const char* pattern, std::string input);
 template <typename T>
 bool	isRound(T value) { return std::abs(value - round(value)) < 1e-9; }
+void	displayChar(std::string input, char charValue);
+void	displayInt(std::string input, int intValue);
+void	displayFloat(std::string input, float floatValue);
+void	displayDouble(std::string input, double doubleValue);
 
 #endif

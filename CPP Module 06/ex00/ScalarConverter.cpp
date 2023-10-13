@@ -6,58 +6,23 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:01:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 12:52:26 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/13 14:20:34 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-void	ScalarConverter::display() {
-	/* CHAR */
-	std::cout << "char: ";
-	if (_charValue < 0 || _charValue > 127 || isPseudoLiteral(_input))
-		std::cout << "impossible" << std::endl;
-	else if (_charValue < ' ' || _charValue > '~')
-		std::cout << "Non displayable" << std::endl;
-	else
-		std::cout << _charValue << std::endl;
-	
-	/* INT */
-	std::cout << "int: ";
-	if (_intValue < INT_MIN || _intValue > INT_MAX || isPseudoLiteral(_input))
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << _intValue << std::endl;
-		
-	/* FLOAT */
-	std::cout << "float: ";
-	if (_input == "-inff" || _input == "-inf")
-		std::cout << "-inff" << std::endl;
-	else if (_input == "+inff" || _input == "+inf")
-		std::cout << "+inff" << std::endl;
-	else if (_input == "nanf" || _input == "nan")
-		std::cout << "nanf" << std::endl;
-	else if (_floatValue < FLT_MIN - 1e-6 || _floatValue > FLT_MAX)
-		std::cout << "impossible" << std::endl;
-	else if (isRound(_floatValue))
-		std::cout << _floatValue << ".0f" << std::endl;
-	else
-		std::cout << _floatValue << "f" << std::endl;
+std::string ScalarConverter::_input;
+char		ScalarConverter::_charValue;
+int			ScalarConverter::_intValue;
+float		ScalarConverter::_floatValue;
+double		ScalarConverter::_doubleValue;
 
-	/* DOUBLE */
-	std::cout << "double: ";
-	if (_input == "-inff" || _input == "-inf")
-		std::cout << "-inf" << std::endl;
-	else if (_input == "+inff" || _input == "+inf")
-		std::cout << "+inf" << std::endl;
-	else if (_input == "nanf" || _input == "nan")
-		std::cout << "nan" << std::endl;
-	else if (_doubleValue < DBL_MIN - 1e-6 || _doubleValue > DBL_MAX)
-		std::cout << "impossible" << std::endl;
-	else if (isRound(_doubleValue))
-		std::cout << _doubleValue << ".0" << std::endl;
-	else
-		std::cout << _doubleValue << std::endl;
+void	ScalarConverter::display() {
+	displayChar(_input, _charValue);
+	displayInt(_input, _intValue);
+	displayFloat(_input, _floatValue);
+	displayDouble(_input, _doubleValue);
 }
 
 void	ScalarConverter::toChar() {
@@ -88,9 +53,10 @@ void	ScalarConverter::toDouble() {
 	_floatValue = static_cast<float>(_doubleValue);
 }
 
-void	ScalarConverter::convert() {
+void	ScalarConverter::convert(std::string input) {
 	int i;
 	
+	_input = input;
 	for (i = 0; i < 10; i++)
 		if (searchPattern(patterns[i], _input) == true)
 			break ;
@@ -116,8 +82,4 @@ void	ScalarConverter::convert() {
 			return ;
 	}
 	display();
-}
-
-void	ScalarConverter::setInput(const std::string& input) {
-	_input = input;
 }
