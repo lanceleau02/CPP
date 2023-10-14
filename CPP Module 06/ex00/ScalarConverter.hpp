@@ -14,6 +14,7 @@
 # define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <ios>
 #include <string>
 #include <cstdlib>
 #include <climits>

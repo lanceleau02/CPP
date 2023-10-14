@@ -37,9 +37,9 @@ bool	verifyValue(std::string input, int mode) {
 }
 
 bool	isPseudoLiteral(std::string input) {
-	if (input == "-inff" || input == "+inff" || input == "nanf"
-		|| input == "-inf" || input == "+inf" || input == "nan")
-		return true;
+	for (int i = 0; i < 6; i++)
+		if (searchPattern(patterns[i], input) == true)
+			return true;
 	return false;
 }
 
