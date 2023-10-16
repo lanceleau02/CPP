@@ -21,11 +21,9 @@
 #include <cfloat>
 #include <cmath>
 #include <regex.h>
+#include <cctype>
 
-static const char*	patterns[10] = {"^\\-inff$", "^\\+inff$", "^nanf$", "^\\-inf$",
-									"^\\+inf$", "^nan$", "^[^0-9]{1}$",
-									"^[+-]?[0-9]+$", "^[+-]?[0-9]+\\.{1}[0-9]+f$",
-									"^[+-]?[0-9]+\\.{1}[0-9]+$"};
+extern const char*	patterns[10];
 
 class ScalarConverter {
 	private:

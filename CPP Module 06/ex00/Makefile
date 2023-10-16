@@ -23,7 +23,7 @@ SRC				:=	main.cpp					\
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
 
-CXX				:=	clang++
+CXX				:=	c++
 CXXFLAGS		:=	-Wall -Wextra -Werror -std=c++98 -g
 CPPFLAGS		:=	-MP -MMD
 LDFLAGS			:=

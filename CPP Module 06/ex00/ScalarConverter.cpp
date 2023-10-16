@@ -12,6 +12,11 @@
 
 #include "ScalarConverter.hpp"
 
+const char*	patterns[10] = {"^\\-inff$", "^\\+inff$", "^nanf$", "^\\-inf$",
+							"^\\+inf$", "^nan$", "^[^0-9]{1}$",
+							"^[+-]?[0-9]+$", "^[+-]?[0-9]+\\.{1}[0-9]+f$",
+							"^[+-]?[0-9]+\\.{1}[0-9]+$"};
+
 std::string ScalarConverter::_input;
 char		ScalarConverter::_charValue;
 int			ScalarConverter::_intValue;

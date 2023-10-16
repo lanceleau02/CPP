@@ -45,9 +45,9 @@ bool	isPseudoLiteral(std::string input) {
 
 void	displayChar(std::string input, char charValue) {
 	std::cout << "char: ";
-	if (charValue < 0 || charValue > 127 || isPseudoLiteral(input))
+	if (!isascii(charValue) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
-	else if (charValue < ' ' || charValue > '~')
+	else if (!isprint(charValue))
 		std::cout << "Non displayable" << std::endl;
 	else
 		std::cout << charValue << std::endl;
