@@ -38,6 +38,24 @@ int	main(void) {
 			delete form;
 		}
 		std::cout << std::endl;
+		std::cout << "Intern tries to create a form named \"RobotomyRequestForm\":" << std::endl << std::endl;
+		{	
+			AForm*		form;
+			Intern		intern;
+
+			form = intern.makeForm("RobotomyRequestForm", "target");
+			delete form;
+		}
+		std::cout << std::endl;
+		std::cout << "Intern tries to create a form named \"PresidentialPardonForm\":" << std::endl << std::endl;
+		{	
+			AForm*		form;
+			Intern		intern;
+
+			form = intern.makeForm("PresidentialPardonForm", "target");
+			delete form;
+		}
+		std::cout << std::endl;
 		std::cout << "Intern tries to create a form named \"form\":" << std::endl << std::endl;
 		{
 			AForm*	form;

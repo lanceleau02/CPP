@@ -26,11 +26,12 @@ class AForm {
 		bool				_signed;
 		const unsigned int	_gradeToSign;
 		const unsigned int	_gradeToExecute;
+		const std::string	_target;
 
 		AForm();
 
 	public:
-		AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute);
+		AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute, const std::string& target);
 		AForm(const AForm& source);
 		AForm&	operator=(const AForm& source);
 		virtual ~AForm();
@@ -39,6 +40,7 @@ class AForm {
 		const bool&			getSigned() const;
 		const unsigned int&	getGradeToSign() const;
 		const unsigned int&	getGradeToExecute() const;
+		const std::string&	getTarget() const;
 		void				beSigned(const Bureaucrat& bureaucrat);
 		virtual void		execute(const Bureaucrat& executor) const = 0;
 		

@@ -13,7 +13,12 @@
 #include "Form.hpp"
 
 Form::Form(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute)
-	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
+	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
+	if (gradeToSign > 150 || gradeToExecute > 150)
+		throw Form::GradeTooLowException();
+	else if (gradeToSign < 1 || gradeToExecute < 1)
+		throw Form::GradeTooHighException();
+}
 
 Form::Form(const Form& source) : _name(source._name), _gradeToSign(source._gradeToSign), _gradeToExecute(source._gradeToExecute) {
 	*this = source;

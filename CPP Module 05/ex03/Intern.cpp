@@ -12,6 +12,18 @@
 
 #include "Intern.hpp"
 
+static AForm*	shrubberyCreationFormBuilder(const std::string& formTarget) {
+	return (new ShrubberyCreationForm(formTarget));
+}
+
+static AForm*	robotomyRequestFormBuilder(const std::string& formTarget) {
+	return (new RobotomyRequestForm(formTarget));
+}
+
+static AForm*	presidentialPardonFormBuilder(const std::string& formTarget) {
+	return (new PresidentialPardonForm(formTarget));
+}
+
 Intern::Intern() {}
 
 Intern::Intern(const Intern& source) {
@@ -26,30 +38,21 @@ Intern& Intern::operator=(const Intern& source) {
 Intern::~Intern() {}
 
 AForm*	Intern::searchAndCreateForm(const std::string& formName, const std::string& formTarget) {
-	std::string		formNames[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
-	int				i;
+	std::string	formNames[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	AForm*		(*formBuilders[3])(const std::string&) = {shrubberyCreationFormBuilder, robotomyRequestFormBuilder, presidentialPardonFormBuilder};
+	int			i;
 	
 	if (formName.empty() || formTarget.empty()) {
-		std::cerr << RED << "Intern can't create a form without a form name or target!" << NONE << std::endl;
+		std::cerr << RED << "Intern can't create a form without a form name or a target!" << NONE << std::endl;
 		return NULL;
 	}
-	for (i = 0; i < 3; i++)
-		if (formNames[i] == formName)
-			break ;
-	switch (i) {
-		case 0:
+	for (i = 0; i < 3; i++) {
+		if (formNames[i] == formName) {
 			std::cout << GREEN << "Intern creates " << formName << "." << NONE << std::endl;
-			return (new ShrubberyCreationForm(formTarget));
-		case 1:
-			std::cout << GREEN << "Intern creates " << formName << "." << NONE << std::endl;
-			return (new RobotomyRequestForm(formTarget));
-		case 2:
-			std::cout << GREEN << "Intern creates " << formName << "." << NONE << std::endl;
-			return (new PresidentialPardonForm(formTarget));
-		default:
-			throw Intern::InvalidFormException();
+			return formBuilders[i](formName);
+		}
 	}
-	return NULL;
+	throw Intern::InvalidFormException();
 }
 
 AForm*	Intern::makeForm(const std::string& formName, const std::string& formTarget) {

@@ -6,13 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:50:45 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/10 14:37:55 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:26:14 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm(target, 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequest", 72, 45, target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& source) : AForm(source) {
 	*this = source;
@@ -31,7 +31,7 @@ void	RobotomyRequestForm::RobotomyRequest() const {
 	
 	std::cout << BLUE << "* Makes some drilling noises. *" << NONE << std::endl;
 	if (rand++ % 2 == 0)
-		std::cout << GREEN << _name << " has been robotomized." << NONE << std::endl;
+		std::cout << GREEN << _target << " has been robotomized." << NONE << std::endl;
 	else
 		std::cout << RED << "The robotomy failed." << NONE << std::endl;
 }

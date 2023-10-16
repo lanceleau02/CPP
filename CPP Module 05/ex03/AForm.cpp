@@ -6,16 +6,21 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:58:46 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/09 13:10:11 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:30:39 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute)
-	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
+AForm::AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute, const std::string& target)
+	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target) {
+	if (gradeToSign > 150 || gradeToExecute > 150)
+		throw AForm::GradeTooLowException();
+	else if (gradeToSign < 1 || gradeToExecute < 1)
+		throw AForm::GradeTooHighException();
+}
 
-AForm::AForm(const AForm& source) : _name(source._name), _gradeToSign(source._gradeToSign), _gradeToExecute(source._gradeToExecute) {
+AForm::AForm(const AForm& source) : _name(source._name), _gradeToSign(source._gradeToSign), _gradeToExecute(source._gradeToExecute), _target(source._target) {
 	*this = source;
 }
 
@@ -43,6 +48,10 @@ const unsigned int&	AForm::getGradeToExecute() const {
 	return _gradeToExecute;
 }
 
+const std::string&	AForm::getTarget() const {
+	return _target;
+}
+
 void	AForm::beSigned(const Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() <= _gradeToSign)
 		_signed = true;
@@ -64,8 +73,8 @@ const char*	AForm::FormNotSignedException::what() const throw() {
 
 std::ostream&	operator<<(std::ostream& os, const AForm& form) {
 	if (form.getSigned() == false)
-		os << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+		os << BLUE << "Form " << form.getName() << " is not signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << NONE << std::endl;
 	else if (form.getSigned() == true)
-		os << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << std::endl;
+		os << BLUE << "Form " << form.getName() << " is signed. Grade required to sign it: " << form.getGradeToSign() << ", grade required to execute it: " << form.getGradeToExecute() << "." << NONE << std::endl;
 	return os;
 }

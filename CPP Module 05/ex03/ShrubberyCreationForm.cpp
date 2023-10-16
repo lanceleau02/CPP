@@ -6,13 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:22:35 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/09 13:12:06 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:30:02 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm(target, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreation", 145, 137, target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& source) : AForm(source) {
 	*this = source;
@@ -31,7 +31,7 @@ void	ShrubberyCreationForm::ShrubberyCreation() const {
 	std::ofstream	outfile;
 
 	infile.open("trees.txt");
-	outfile.open((_name + "_shrubbery").c_str());
+	outfile.open((_target + "_shrubbery").c_str());
 	if (infile.is_open() == false || outfile.is_open() == false) {
 		std::cerr << "Error: Impossible to open the file!" << std::endl;
 		return ;

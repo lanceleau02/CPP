@@ -12,10 +12,15 @@
 
 #include "AForm.hpp"
 
-AForm::AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute)
-	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
+AForm::AForm(const std::string& name, const unsigned int& gradeToSign, const unsigned int& gradeToExecute, const std::string& target)
+	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target) {
+	if (gradeToSign > 150 || gradeToExecute > 150)
+		throw AForm::GradeTooLowException();
+	else if (gradeToSign < 1 || gradeToExecute < 1)
+		throw AForm::GradeTooHighException();
+}
 
-AForm::AForm(const AForm& source) : _name(source._name), _gradeToSign(source._gradeToSign), _gradeToExecute(source._gradeToExecute) {
+AForm::AForm(const AForm& source) : _name(source._name), _gradeToSign(source._gradeToSign), _gradeToExecute(source._gradeToExecute), _target(source._target) {
 	*this = source;
 }
 
@@ -41,6 +46,10 @@ const unsigned int&	AForm::getGradeToSign() const {
 
 const unsigned int&	AForm::getGradeToExecute() const {
 	return _gradeToExecute;
+}
+
+const std::string&	AForm::getTarget() const {
+	return _target;
 }
 
 void	AForm::beSigned(const Bureaucrat& bureaucrat) {
