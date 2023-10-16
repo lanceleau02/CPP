@@ -60,10 +60,6 @@ void	ScalarConverter::convert(std::string input) {
 	for (i = 0; i < 10; i++)
 		if (searchPattern(patterns[i], _input) == true)
 			break ;
-	if (i < 6) {
-		display();
-		return ;
-	}
 	if (i == 6)
 		toChar();
 	else if (i == 7)
@@ -72,7 +68,9 @@ void	ScalarConverter::convert(std::string input) {
 		toFloat();
 	else if (i == 9)
 		toDouble();
-	else 
-		std::cout << "Error: invalid input" << std::endl;
+	else if (i > 6) {
+		std::cerr << "Error: invalid input" << std::endl;
+		return ;
+	}
 	display();
 }

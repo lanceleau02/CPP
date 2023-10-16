@@ -17,6 +17,6 @@ int	main(int argc, char **argv) {
 		ScalarConverter::convert(argv[1]);
 		return 0;
 	}
-	std::cout << "Error: invalid argument" << std::endl;
+	std::cerr << "Error: invalid argument" << std::endl;
 	return 1;
 }
