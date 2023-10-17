@@ -24,7 +24,7 @@ float		ScalarConverter::_floatValue;
 double		ScalarConverter::_doubleValue;
 
 void	ScalarConverter::display() {
-	displayChar(_input, _charValue);
+	displayChar(_input, _charValue, _intValue);
 	displayInt(_input, _intValue);
 	displayFloat(_input, _floatValue);
 	displayDouble(_input, _doubleValue);
@@ -39,23 +39,28 @@ void	ScalarConverter::toChar() {
 
 void	ScalarConverter::toInt() {
 	_intValue = atoi(_input.c_str());
-	_charValue = static_cast<char>(_intValue);
+	if (verifyValue(_input, 0))
+		_charValue = static_cast<char>(_intValue);
 	_floatValue = static_cast<float>(_intValue);
 	_doubleValue = static_cast<double>(_intValue);
 }
 
 void	ScalarConverter::toFloat() {
 	_floatValue = atof(_input.c_str());
-	_charValue = static_cast<char>(_floatValue);
-	_intValue = static_cast<int>(_floatValue);
+	if (verifyValue(_input, 1)) {
+		_charValue = static_cast<char>(_floatValue);
+		_intValue = static_cast<int>(_floatValue);
+	}
 	_doubleValue = static_cast<double>(_floatValue);
 }
 
 void	ScalarConverter::toDouble() {
 	_doubleValue = strtod(_input.c_str(), NULL);
-	_charValue = static_cast<char>(_doubleValue);
-	_intValue = static_cast<int>(_doubleValue);
-	_floatValue = static_cast<float>(_doubleValue);
+	if (verifyValue(_input, 2)) {
+		_charValue = static_cast<char>(_doubleValue);
+		_intValue = static_cast<int>(_doubleValue);
+		_floatValue = static_cast<float>(_doubleValue);
+	}
 }
 
 void	ScalarConverter::convert(std::string input) {
