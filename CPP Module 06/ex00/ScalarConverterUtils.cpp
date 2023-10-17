@@ -71,7 +71,7 @@ void	displayFloat(std::string input, float floatValue) {
 		std::cout << "nanf" << std::endl;
 	else if (verifyValue(input, 1) == false)
 		std::cout << "impossible" << std::endl;
-	else if (isRound(floatValue) && !isDecimal(floatValue))
+	else if (isRound(floatValue) && !test(floatValue)/*  && !isDecimal(floatValue) */)
 		std::cout << floatValue << ".0f" << std::endl;
 	else
 		std::cout << floatValue << "f" << std::endl;
@@ -87,7 +87,7 @@ void	displayDouble(std::string input, double doubleValue) {
 		std::cout << "nan" << std::endl;
 	else if (verifyValue(input, 2) == false)
 		std::cout << "impossible" << std::endl;
-	else if (isRound(doubleValue) && !isDecimal(doubleValue))
+	else if (isRound(doubleValue) && !test(doubleValue) /* !isDecimal(doubleValue) */)
 		std::cout << doubleValue << ".0" << std::endl;
 	else
 		std::cout << doubleValue << std::endl;

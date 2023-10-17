@@ -23,6 +23,7 @@
 #include <regex.h>
 #include <cctype>
 #include <iomanip>
+#include <sstream>
 
 extern const char*	patterns[10];
 
@@ -57,6 +58,23 @@ template <typename T>
 bool	isDecimal(T number) {
 	T truncated = static_cast<T>(static_cast<int>(number));
     return std::abs(number - truncated) > 0.0;
+}
+template <typename T>
+bool test(T number) {
+    std::ostringstream oss;
+    oss << number;  // Convert the float to a string
+    std::string numberStr = oss.str();
+
+    // Find the position of the decimal point (if any)
+    size_t decimalPos = numberStr.find('.');
+    if (decimalPos == std::string::npos) {
+        return false; // No decimal point found
+    }
+
+    // Calculate the number of decimal digits
+    size_t numDecimalDigits = numberStr.size() - decimalPos - 1;
+
+    return numDecimalDigits >= 6;
 }
 void	displayChar(std::string input, char charValue, int intValue);
 void	displayInt(std::string input, int intValue);
