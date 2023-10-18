@@ -5,18 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 11:47:10 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 14:24:39 by laprieur         ###   ########.fr       */
+/*   Created: 2023/10/18 13:44:27 by laprieur          #+#    #+#             */
+/*   Updated: 2023/10/18 14:29:04 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int	main(int argc, char **argv) {	
-	if (argc == 2) {
-		ScalarConverter::convert(argv[1]);
-		return 0;
-	}
-	std::cerr << "Error: invalid argument" << std::endl;
-	return 1;
+int	main(void) {
+	Data		obj;
+	Data*		ptr = &obj;
+	uintptr_t	serialized = Serializer::serialize(ptr);
+	Data*		deserialized = Serializer::deserialize(serialized);
+
+	if (ptr == deserialized)
+		std::cout << "Success!" << std::endl;
+	else
+		std::cout << "Fail!" << std::endl;
 }

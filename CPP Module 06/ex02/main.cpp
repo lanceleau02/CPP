@@ -5,18 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 11:47:10 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 14:24:39 by laprieur         ###   ########.fr       */
+/*   Created: 2023/10/18 15:01:37 by laprieur          #+#    #+#             */
+/*   Updated: 2023/10/18 16:40:29 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-int	main(int argc, char **argv) {	
-	if (argc == 2) {
-		ScalarConverter::convert(argv[1]);
-		return 0;
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+Base*	generate(void) {
+	switch (std::rand() % 3) {
+		case 0:
+			return (new A);
+		case 1:
+			return (new B);
+		default:
+			return (new C);
 	}
-	std::cerr << "Error: invalid argument" << std::endl;
-	return 1;
+}
+
+/* void	identify(Base* p) {
+
+} */
+
+int	main(void) {
+	std::srand(std::time(NULL));
+	
+	Base*	a = generate();
+	
+	std::cout << &a << std::endl;
 }

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 11:47:10 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/13 14:24:39 by laprieur         ###   ########.fr       */
+/*   Created: 2023/10/18 14:44:47 by laprieur          #+#    #+#             */
+/*   Updated: 2023/10/18 14:55:35 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef B_HPP
+# define B_HPP
 
-int	main(int argc, char **argv) {	
-	if (argc == 2) {
-		ScalarConverter::convert(argv[1]);
-		return 0;
-	}
-	std::cerr << "Error: invalid argument" << std::endl;
-	return 1;
-}
+#include "Base.hpp"
+
+class B : public Base {};
+
+#endif

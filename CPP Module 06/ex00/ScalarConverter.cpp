@@ -23,13 +23,6 @@ int			ScalarConverter::_intValue;
 float		ScalarConverter::_floatValue;
 double		ScalarConverter::_doubleValue;
 
-void	ScalarConverter::display() {
-	displayChar(_input, _charValue, _intValue);
-	displayInt(_input, _intValue);
-	displayFloat(_input, _floatValue);
-	displayDouble(_input, _doubleValue);
-}
-
 void	ScalarConverter::toChar() {
 	_charValue = _input[0];
 	_intValue = static_cast<int>(_charValue);
@@ -39,15 +32,20 @@ void	ScalarConverter::toChar() {
 
 void	ScalarConverter::toInt() {
 	_intValue = atoi(_input.c_str());
-	if (verifyValue(_input, 0))
+	if (verifyValue(_input, INT)) {
 		_charValue = static_cast<char>(_intValue);
-	_floatValue = static_cast<float>(_intValue);
-	_doubleValue = static_cast<double>(_intValue);
+		_floatValue = static_cast<float>(_intValue);
+		_doubleValue = static_cast<double>(_intValue);
+	}
+	else if (verifyValue(_input, FLOAT))
+		toFloat();
+	else if (verifyValue(_input, DOUBLE))
+		toDouble();
 }
 
 void	ScalarConverter::toFloat() {
 	_floatValue = atof(_input.c_str());
-	if (verifyValue(_input, 1)) {
+	if (verifyValue(_input, FLOAT)) {
 		_charValue = static_cast<char>(_floatValue);
 		_intValue = static_cast<int>(_floatValue);
 	}
@@ -56,11 +54,18 @@ void	ScalarConverter::toFloat() {
 
 void	ScalarConverter::toDouble() {
 	_doubleValue = strtod(_input.c_str(), NULL);
-	if (verifyValue(_input, 2)) {
+	if (verifyValue(_input, DOUBLE)) {
 		_charValue = static_cast<char>(_doubleValue);
 		_intValue = static_cast<int>(_doubleValue);
 		_floatValue = static_cast<float>(_doubleValue);
 	}
+}
+
+void	ScalarConverter::display() {
+	displayChar(_input, _charValue);
+	displayInt(_input, _intValue);
+	displayFloat(_input, _floatValue);
+	displayDouble(_input, _doubleValue);
 }
 
 void	ScalarConverter::convert(std::string input) {
@@ -68,7 +73,7 @@ void	ScalarConverter::convert(std::string input) {
 	
 	_input = input;
 	for (i = 0; i < 10; i++)
-		if (searchPattern(patterns[i], _input) == true)
+		if (searchPattern(patterns[i], _input))
 			break ;
 	if (i == 6)
 		toChar();

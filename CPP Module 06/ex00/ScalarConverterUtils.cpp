@@ -27,25 +27,39 @@ bool	searchPattern(const char* pattern, std::string input) {
 }
 
 bool	verifyValue(std::string input, int mode) {
-	if (mode == 0 && (atol(input.c_str()) < INT_MIN || atol(input.c_str()) > INT_MAX))
+	if (mode == CHAR && !isascii(atoi(input.c_str())))
 		return false;
-	if (mode == 1 && (strtod(input.c_str(), NULL) < FLT_MIN - 1e-6 || strtod(input.c_str(), NULL) > FLT_MAX))
+	if (mode == INT && (atol(input.c_str()) < INT_MIN || atol(input.c_str()) > INT_MAX))
 		return false;
-	if (mode == 2 && (strtold(input.c_str(), NULL) < DBL_MIN - 1e-6 || strtold(input.c_str(), NULL) > DBL_MAX))
+	if (mode == FLOAT && (strtod(input.c_str(), NULL) < FLT_MIN - 1e-6 || strtod(input.c_str(), NULL) > FLT_MAX))
+		return false;
+	if (mode == DOUBLE && (strtold(input.c_str(), NULL) < DBL_MIN - 1e-6 || strtold(input.c_str(), NULL) > DBL_MAX))
 		return false;
 	return true;
 }
 
-bool	isPseudoLiteral(std::string input) {
+static bool	isPseudoLiteral(std::string input) {
 	for (int i = 0; i < 6; i++)
-		if (searchPattern(patterns[i], input) == true)
+		if (searchPattern(patterns[i], input))
 			return true;
 	return false;
 }
 
-void	displayChar(std::string input, char charValue, int intValue) {
+static void	displayPseudoLiteral(std::string input, int mode) {
+	if (input == "-inff" || input == "-inf")
+		std::cout << "-inf";
+	else if (input == "+inff" || input == "+inf")
+		std::cout << "+inf";
+	else if (input == "nanf" || input == "nan")
+		std::cout << "nan";
+	if (mode == FLOAT)
+		std::cout << "f";
+	std::cout << std::endl;
+}
+
+void	displayChar(std::string input, char charValue) {
 	std::cout << "char: ";
-	if (!isascii(intValue) || isPseudoLiteral(input))
+	if (!verifyValue(input, CHAR) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
 	else if (!isprint(charValue))
 		std::cout << "Non displayable" << std::endl;
@@ -55,7 +69,7 @@ void	displayChar(std::string input, char charValue, int intValue) {
 
 void	displayInt(std::string input, int intValue) {
 	std::cout << "int: ";
-	if (verifyValue(input, 0) == false || isPseudoLiteral(input) == true)
+	if (!verifyValue(input, INT) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << intValue << std::endl;
@@ -63,15 +77,11 @@ void	displayInt(std::string input, int intValue) {
 
 void	displayFloat(std::string input, float floatValue) {
 	std::cout << "float: ";
-	if (input == "-inff" || input == "-inf")
-		std::cout << "-inff" << std::endl;
-	else if (input == "+inff" || input == "+inf")
-		std::cout << "+inff" << std::endl;
-	else if (input == "nanf" || input == "nan")
-		std::cout << "nanf" << std::endl;
-	else if (verifyValue(input, 1) == false)
+	if (isPseudoLiteral(input))
+		displayPseudoLiteral(input, FLOAT);
+	else if (!verifyValue(input, FLOAT))
 		std::cout << "impossible" << std::endl;
-	else if (isRound(floatValue) && !test(floatValue)/*  && !isDecimal(floatValue) */)
+	else if (isRound(floatValue) && !isScientificNotation(floatValue))
 		std::cout << floatValue << ".0f" << std::endl;
 	else
 		std::cout << floatValue << "f" << std::endl;
@@ -79,15 +89,11 @@ void	displayFloat(std::string input, float floatValue) {
 
 void	displayDouble(std::string input, double doubleValue) {
 	std::cout << "double: ";
-	if (input == "-inff" || input == "-inf")
-		std::cout << "-inf" << std::endl;
-	else if (input == "+inff" || input == "+inf")
-		std::cout << "+inf" << std::endl;
-	else if (input == "nanf" || input == "nan")
-		std::cout << "nan" << std::endl;
-	else if (verifyValue(input, 2) == false)
+	if (isPseudoLiteral(input))
+		displayPseudoLiteral(input, DOUBLE);
+	else if (!verifyValue(input, DOUBLE))
 		std::cout << "impossible" << std::endl;
-	else if (isRound(doubleValue) && !test(doubleValue) /* !isDecimal(doubleValue) */)
+	else if (isRound(doubleValue) && !isScientificNotation(doubleValue))
 		std::cout << doubleValue << ".0" << std::endl;
 	else
 		std::cout << doubleValue << std::endl;
