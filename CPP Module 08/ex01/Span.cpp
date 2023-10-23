@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.tpp                                       :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 12:55:32 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/23 11:28:13 by laprieur         ###   ########.fr       */
+/*   Created: 2023/10/23 16:43:00 by laprieur          #+#    #+#             */
+/*   Updated: 2023/10/23 16:44:18 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_TPP
-# define EASYFIND_TPP
+#include "Span.hpp"
 
-template <typename T>
-typename T::iterator	easyfind(T& container, int toFind) {
-	return std::find(container.begin(), container.end(), toFind);
-}
+Span::Span() {}
 
-#endif
+Span::Span(const Span& source) {}
+
+Span&	Span::operator=(const Span& source) {}
+
+Span::~Span() {}
+
+void			Span::addNumber() {}
+
+unsigned int	Span::shortestSpan() const {}
+
+unsigned int	Span::longestSpan() const {}
