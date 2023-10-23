@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:54:42 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/20 16:52:45 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:18:03 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	main(void) {
 		std::cout << "For these tests, toFind = " << toFind << " and toNotFind = " << toNotFind << "." << std::endl << std::endl;		
 		std::cout << UNDERLINE BLUE << "std::vector" << NONE << std::endl << std::endl;
 		{
-			std::vector<int>	v(arr, arr + sizeof(arr) / sizeof(arr[0]));
-			size_t				ret1 = easyfind(v, toFind);
-			size_t				ret2 = easyfind(v, toNotFind);
+			std::vector<int>			v(arr, arr + 5);
+			std::vector<int>::iterator	ret1 = easyfind(v, toFind);
+			std::vector<int>::iterator	ret2 = easyfind(v, toNotFind);
 	
-			if (ret1 != std::string::npos)
+			if (ret1 != v.end())
 				std::cout << GREEN << "Element toFind found!" << NONE << std::endl;
 			else 
 				std::cout << RED << "Element toFind not found!" << NONE << std::endl;
-			if (ret2 != std::string::npos)
+			if (ret2 != v.end())
 				std::cout << GREEN << "Element toNotFind found!" << NONE << std::endl;
 			else 
 				std::cout << RED << "Element toNotFind not found!" << NONE << std::endl;
