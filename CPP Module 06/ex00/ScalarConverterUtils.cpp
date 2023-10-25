@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:09:09 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/24 17:10:27 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:30:22 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,6 @@ bool	searchPattern(const char* pattern, std::string input) {
 	}
 	regfree(&regex);
 	return false;
-}
-
-bool	verifyValue(std::string input, int mode) {
-	if (mode == CHAR && !isascii(atoi(input.c_str())))
-		return false;
-	if (mode == INT && (atol(input.c_str()) < INT_MIN || atol(input.c_str()) > INT_MAX))
-		return false;
-	if (mode == FLOAT && ((strtod(input.c_str(), NULL) > (-FLT_MIN)
-		&& strtod(input.c_str(), NULL) < FLT_MIN) || strtod(input.c_str(), NULL) < (-FLT_MAX)
-		|| strtod(input.c_str(), NULL) > FLT_MAX))
-		return false;
-	if (mode == DOUBLE && ((strtold(input.c_str(), NULL) > (-DBL_MIN)
-		&& strtold(input.c_str(), NULL) < DBL_MIN) || strtold(input.c_str(), NULL) < (-DBL_MAX)
-		|| strtold(input.c_str(), NULL) > DBL_MAX))
-		return false;
-	return true;
 }
 
 static bool	isPseudoLiteral(std::string input) {
@@ -63,7 +47,7 @@ static void	displayPseudoLiteral(std::string input, int mode) {
 
 void	displayChar(std::string input, char charValue) {
 	std::cout << "char: ";
-	if (input == "impossible" || isPseudoLiteral(input))
+	if (!verifyValue(atoi(input.c_str()), CHAR) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
 	else if (!isprint(charValue))
 		std::cout << "Non displayable" << std::endl;
@@ -73,7 +57,7 @@ void	displayChar(std::string input, char charValue) {
 
 void	displayInt(std::string input, int intValue) {
 	std::cout << "int: ";
-	if (input == "impossible" || isPseudoLiteral(input))
+	if (!verifyValue(intValue, INT) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << intValue << std::endl;
@@ -83,7 +67,7 @@ void	displayFloat(std::string input, float floatValue) {
 	std::cout << "float: ";
 	if (isPseudoLiteral(input))
 		displayPseudoLiteral(input, FLOAT);
-	else if (input == "impossible")
+	else if (!verifyValue(floatValue, FLOAT))
 		std::cout << "impossible" << std::endl;
 	else if (isRound(floatValue) && !isScientificNotation(floatValue))
 		std::cout << floatValue << ".0f" << std::endl;
@@ -95,7 +79,7 @@ void	displayDouble(std::string input, double doubleValue) {
 	std::cout << "double: ";
 	if (isPseudoLiteral(input))
 		displayPseudoLiteral(input, DOUBLE);
-	else if (input == "impossible")
+	else if (!verifyValue(doubleValue, DOUBLE))
 		std::cout << "impossible" << std::endl;
 	else if (isRound(doubleValue) && !isScientificNotation(doubleValue))
 		std::cout << doubleValue << ".0" << std::endl;

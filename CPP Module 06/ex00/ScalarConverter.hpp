@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:49:23 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/24 16:51:42 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:58:52 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <climits>
+#include <limits>
 #include <cfloat>
 #include <cmath>
 #include <regex.h>
@@ -32,11 +33,11 @@ enum MODE {
 
 class ScalarConverter {
 	private:
-		static std::string	_input;
-		static char			_charValue;
-		static int			_intValue;
-		static float		_floatValue;
-		static double		_doubleValue;
+		static std::istringstream	_input;
+		static char					_charValue;
+		static int					_intValue;
+		static float				_floatValue;
+		static double				_doubleValue;
 
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& source);
@@ -50,6 +51,11 @@ class ScalarConverter {
 		static void	toFloat();
 		static void	toDouble();
 		static void	display();
+		
+		class InvalidInput : public std::exception {
+			public:
+    			virtual const char* what() const throw();
+		};
 };
 
 bool	searchPattern(const char* pattern, std::string input);
@@ -58,6 +64,19 @@ void	displayChar(std::string input, char charValue);
 void	displayInt(std::string input, int intValue);
 void	displayFloat(std::string input, float floatValue);
 void	displayDouble(std::string input, double doubleValue);
+
+template <typename T>
+bool	verifyValue(T value, int mode) {
+	if (mode == CHAR && !isascii(value))
+		return false;
+	if (mode == INT && (value < INT_MIN || value > INT_MAX))
+		return false;
+	if (mode == FLOAT && value != 0.0f && (value < -std::numeric_limits<float>::max() || value > std::numeric_limits<float>::max()))
+		return false;
+	if (mode == DOUBLE && value != 0.0 && (value < -std::numeric_limits<double>::max() || value > std::numeric_limits<double>::max()))
+		return false;
+	return true;
+}
 
 template <typename T>
 bool	isRound(T value) { return std::abs(value - round(value)) < 1e-9; }
