@@ -69,7 +69,7 @@ const char*	ScalarConverter::InvalidInput::what() const throw() {
 	return ("Error: invalid input");
 }
 
-void	ScalarConverter::convert(std::string input) {
+void	ScalarConverter::convert(const std::string& input) {
 	int i;
 
 	_input.str(input);

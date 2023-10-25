@@ -98,4 +98,9 @@ int	main(void) {
 		identify(*obj4);
 	}
 	std::cout << std::endl;
+
+	delete obj1;
+	delete obj2;
+	delete obj3;
+	delete obj4;
 }

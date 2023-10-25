@@ -12,8 +12,11 @@
 
 #include "Serializer.hpp"
 
+#include <iostream>
+
 #define RED		"\033[31m"
 #define GREEN	"\033[32m"
+#define NONE	"\033[0m"
 
 int	main(void) {
 	Data		obj;
@@ -22,8 +25,8 @@ int	main(void) {
 	Data*		deserialized = Serializer::deserialize(serialized);
 
 	if (ptr == deserialized)
-		std::cout << GREEN << "Success!" << std::endl;
+		std::cout << GREEN << "Success!" << NONE << std::endl;
 	else
-		std::cout << RED << "Fail!" << std::endl;
+		std::cout << RED << "Fail!" << NONE << std::endl;
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "ScalarConverter.hpp"
 
-bool	searchPattern(const char* pattern, std::string input) {
+bool	searchPattern(const char* pattern, const std::string& input) {
 	regex_t		regex;
 	regmatch_t	match;
 
@@ -26,14 +26,14 @@ bool	searchPattern(const char* pattern, std::string input) {
 	return false;
 }
 
-static bool	isPseudoLiteral(std::string input) {
+static bool	isPseudoLiteral(const std::string& input) {
 	for (int i = 0; i < 6; i++)
 		if (searchPattern(patterns[i], input))
 			return true;
 	return false;
 }
 
-static void	displayPseudoLiteral(std::string input, int mode) {
+static void	displayPseudoLiteral(const std::string& input, int mode) {
 	if (input == "-inff" || input == "-inf")
 		std::cout << "-inf";
 	else if (input == "+inff" || input == "+inf")
@@ -45,7 +45,7 @@ static void	displayPseudoLiteral(std::string input, int mode) {
 	std::cout << std::endl;
 }
 
-void	displayChar(std::string input, char charValue) {
+void	displayChar(const std::string& input, char charValue) {
 	std::cout << "char: ";
 	if (!verifyValue(atoi(input.c_str()), CHAR) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
@@ -55,7 +55,7 @@ void	displayChar(std::string input, char charValue) {
 		std::cout << "\'" << charValue << "\'" << std::endl;
 }
 
-void	displayInt(std::string input, int intValue) {
+void	displayInt(const std::string& input, int intValue) {
 	std::cout << "int: ";
 	if (!verifyValue(intValue, INT) || isPseudoLiteral(input))
 		std::cout << "impossible" << std::endl;
@@ -63,7 +63,7 @@ void	displayInt(std::string input, int intValue) {
 		std::cout << intValue << std::endl;
 }
 
-void	displayFloat(std::string input, float floatValue) {
+void	displayFloat(const std::string& input, float floatValue) {
 	std::cout << "float: ";
 	if (isPseudoLiteral(input))
 		displayPseudoLiteral(input, FLOAT);
@@ -75,7 +75,7 @@ void	displayFloat(std::string input, float floatValue) {
 		std::cout << floatValue << "f" << std::endl;
 }
 
-void	displayDouble(std::string input, double doubleValue) {
+void	displayDouble(const std::string& input, double doubleValue) {
 	std::cout << "double: ";
 	if (isPseudoLiteral(input))
 		displayPseudoLiteral(input, DOUBLE);
