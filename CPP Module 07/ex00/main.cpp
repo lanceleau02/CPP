@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:36:15 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/20 13:45:53 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:02:59 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int	main(void) {
 		std::cout << std::endl;
 		std::cout << UNDERLINE BLUE << "Test with characters:" << NONE << std::endl << std::endl;
 		{
-			char	a = '4';
-			char	b = '2';
+			char	a = 'a';
+			char	b = 'b';
 			
-			std::cout << "Values before the swap: a = " << a << " ; b = " << b << std::endl << std::endl;
+			std::cout << "Values before the swap: a = \'" << a << "\' ; b = \'" << b << "\'" << std::endl << std::endl;
 			swap(a, b);
-			std::cout << "Values after the swap: a = " << a << " ; b = " << b << std::endl;
+			std::cout << "Values after the swap: a = \'" << a << "\' ; b = \'" << b << "\'" << std::endl;
 		}
 		std::cout << std::endl;
 		std::cout << UNDERLINE BLUE << "Test with strings:" << NONE << std::endl << std::endl;
@@ -67,9 +67,9 @@ int	main(void) {
 			std::string	a = "Forty";
 			std::string	b = "Two";
 			
-			std::cout << "Values before the swap: a = " << a << " ; b = " << b << std::endl << std::endl;
+			std::cout << "Values before the swap: a = \"" << a << "\" ; b = \"" << b << "\"" << std::endl << std::endl;
 			swap(a, b);
-			std::cout << "Values after the swap: a = " << a << " ; b = " << b << std::endl;
+			std::cout << "Values after the swap: a = \"" << a << "\" ; b = \"" << b << "\"" << std::endl;
 		}
 	}
 	std::cout << std::endl;
@@ -91,16 +91,17 @@ int	main(void) {
 			
 			std::cout << "The smallest value between " << a << " and " << b << " is " << min(a, b) << std::endl;
 			std::cout << std::endl;
+			std::cout << "Address of a: " << &a << std::endl;
 			std::cout << "Address of b: " << &b << std::endl;
 			std::cout << "Return address of max() function: " << &min(a, b) << std::endl;
 		}
 		std::cout << std::endl;
 		std::cout << UNDERLINE BLUE << "Test with characters:" << NONE << std::endl << std::endl;
 		{
-			char	a = '4';
-			char	b = '2';
+			char	a = 'a';
+			char	b = 'b';
 			
-			std::cout << "The smallest value between " << a << " and " << b << " is " << min(a, b) << std::endl;
+			std::cout << "The smallest value between \'" << a << "\' and \'" << b << "\' is \'" << min(a, b) << "\'" << std::endl;
 		}
 	}
 	std::cout << std::endl;
@@ -122,16 +123,17 @@ int	main(void) {
 			
 			std::cout << "The biggest value between " << a << " and " << b << " is " << max(a, b) << std::endl;
 			std::cout << std::endl;
+			std::cout << "Address of a: " << &a << std::endl;
 			std::cout << "Address of b: " << &b << std::endl;
 			std::cout << "Return address of max() function: " << &max(a, b) << std::endl;
 		}
 		std::cout << std::endl;
 		std::cout << UNDERLINE BLUE << "Test with characters:" << NONE << std::endl << std::endl;
 		{
-			char	a = '4';
-			char	b = '2';
+			char	a = 'a';
+			char	b = 'b';
 			
-			std::cout << "The biggest value between " << a << " and " << b << " is " << max(a, b) << std::endl;
+			std::cout << "The biggest value between \'" << a << "\' and \'" << b << "\' is \'" << max(a, b) << "\'" << std::endl;
 		}
 	}
 	return 0;

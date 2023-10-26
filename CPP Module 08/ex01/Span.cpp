@@ -6,16 +6,48 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:43:00 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/24 11:16:24 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:31:32 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-void			Span::addNumber() {
-	
+Span::Span(unsigned int n) : _numbers(n, 0), _idx(0) {}
+
+Span::Span(const Span& source) {
+	*this = source;
 }
 
-unsigned int	Span::shortestSpan() const {}
+Span&	Span::operator=(const Span& source) {
+	if (this != &source) {
+		_numbers = source._numbers;
+		_idx = source._idx;
+	}
+	return *this;
+}
 
-unsigned int	Span::longestSpan() const {}
+Span::~Span() {}
+
+void			Span::addNumber(unsigned int value) {
+	if (_idx >= _numbers.size())
+		throw std::out_of_range("Index is out of range!");
+	_numbers[_idx] = value;
+}
+
+unsigned int	Span::shortestSpan() const {
+	unsigned int currSpan;
+	unsigned int span;
+	
+	if (_numbers.size() < 2)
+		throw std::logic_error("Not enough elements in the array!");
+	for (size_t i = 0; i < _numbers.size(); i++) {
+		for (size_t j = 0; j < _numbers.size(); j++) {
+			currSpan = std::abs()
+		}
+	}
+}
+
+unsigned int	Span::longestSpan() const {
+	if (_numbers.size() < 2)
+		throw std::logic_error("Not enough elements in the array!");
+}

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:13:32 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/20 11:55:23 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:56:01 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ template <typename T>
 Array<T>::Array() : _array(new T()), _size(0) {}
 
 template <typename T>
-Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {}
+Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {
+	for (unsigned int i = 0; i < _size; i++)
+			_array[i] = T();
+}
 
 template <typename T>
 Array<T>::Array(const Array& source) : _array(new T[source._size]), _size(source._size) {
