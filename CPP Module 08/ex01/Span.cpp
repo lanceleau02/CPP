@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:43:00 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/26 15:31:32 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:01:13 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,11 @@ void			Span::addNumber(unsigned int value) {
 }
 
 unsigned int	Span::shortestSpan() const {
-	unsigned int currSpan;
+	unsigned int shortestSpan;
 	unsigned int span;
 	
 	if (_numbers.size() < 2)
 		throw std::logic_error("Not enough elements in the array!");
-	for (size_t i = 0; i < _numbers.size(); i++) {
-		for (size_t j = 0; j < _numbers.size(); j++) {
-			currSpan = std::abs()
-		}
-	}
 }
 
 unsigned int	Span::longestSpan() const {
