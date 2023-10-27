@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:13:32 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/26 15:56:01 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:08:25 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ T&	Array<T>::operator[](unsigned int idx) {
 
 template <typename T>
 Array<T>::~Array() {
-	delete[] _array;
+	if (_size == 0)
+		delete _array;
+	else
+		delete[] _array;
 }
 
 template <typename T>
