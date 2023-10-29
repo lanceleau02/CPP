@@ -30,11 +30,13 @@ class Span {
 		Span(const Span& source);
 		Span&	operator=(const Span& source);
 		~Span();
-		
-		void	addNumber(int value);
-		void	addNumbers(int* values, size_t size);
-		int		shortestSpan() const;
-		int		longestSpan() const;
+
+		int			getNumber(unsigned int idx) const;
+		void		setNumber(unsigned int idx, int value);
+		void		addNumber(int value);
+		void		addNumbers(int* values, size_t size);
+		long int	shortestSpan() const;
+		long int	longestSpan() const;
 };
 
 #endif
