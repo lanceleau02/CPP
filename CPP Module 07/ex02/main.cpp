@@ -80,23 +80,36 @@ int main(int, char**)
 		Array<int>	arr2(10);
 		Array<int>	arr3;
 		
-		std::cout << "Here's the values in the array arr1: ";
+		std::cout << "Here are the values in the array arr1: ";
 		for (unsigned int i = 0; i < arr1.size(); i++) {
 			arr1[i] = i;
 			std::cout << arr1[i];
 		}
-		std::cout << std::endl;
+
+		std::cout << std::endl << std::endl << "Now we do the deep copy: arr2 = arr1" << std::endl << std::endl;
 		
-		std::cout << std::endl << "Now we do the deep copy and we set arr2[5] = 8" << std::endl << std::endl;
 		arr2 = arr1;
-		arr2[5] = 8;
 		
-		std::cout << "Here's the values in the array arr1: ";
+		std::cout << "Here are the values in the array arr1 after the deep copy: ";
 		for (unsigned int i = 0; i < arr1.size(); i++)
 			std::cout << arr1[i];
 		std::cout << std::endl;
 			
-		std::cout << std::endl << "Here's the values in the array arr2: ";
+		std::cout << std::endl << "Here are the values in the array arr2 after the deep copy: ";
+		for (unsigned int i = 0; i < arr2.size(); i++)
+			std::cout << arr2[i];
+		std::cout << std::endl;
+		
+		std::cout << std::endl << "Now we set arr2[5] = 8" << std::endl << std::endl;
+
+		arr2[5] = 8;
+		
+		std::cout << "Here are the values in the array arr1: ";
+		for (unsigned int i = 0; i < arr1.size(); i++)
+			std::cout << arr1[i];
+		std::cout << std::endl;
+			
+		std::cout << std::endl << "Here are the values in the array arr2: ";
 		for (unsigned int i = 0; i < arr2.size(); i++)
 			std::cout << arr2[i];
 		std::cout << std::endl;
