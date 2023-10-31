@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:36:15 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/26 14:02:59 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:49:56 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(void) {
 			std::cout << std::endl;
 			std::cout << "Address of a: " << &a << std::endl;
 			std::cout << "Address of b: " << &b << std::endl;
-			std::cout << "Return address of max() function: " << &min(a, b) << std::endl;
+			std::cout << "Return address of min() function: " << &min(a, b) << std::endl;
 		}
 		std::cout << std::endl;
 		std::cout << UNDERLINE BLUE << "Test with characters:" << NONE << std::endl << std::endl;

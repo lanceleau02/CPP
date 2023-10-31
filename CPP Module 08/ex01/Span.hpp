@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:24:09 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/27 16:05:14 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:56:12 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 class Span {
 	private:
 		std::vector<int>	_numbers;
-		unsigned int		_idx;
 
 		Span();
 	
@@ -34,7 +33,7 @@ class Span {
 		int			getNumber(unsigned int idx) const;
 		void		setNumber(unsigned int idx, int value);
 		void		addNumber(int value);
-		void		addNumbers(int* values, size_t size);
+		void		addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		long int	shortestSpan() const;
 		long int	longestSpan() const;
 };

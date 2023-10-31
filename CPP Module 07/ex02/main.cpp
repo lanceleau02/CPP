@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 09:23:21 by laprieur          #+#    #+#             */
-/*   Updated: 2023/10/26 16:00:12 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:53:26 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,17 @@ int main(int, char**)
 	{
 		Array<int>	arr1(10);
 		Array<int>	arr2(10);
-		Array<int>	arr3;
 		
 		std::cout << "Here are the values in the array arr1: ";
 		for (unsigned int i = 0; i < arr1.size(); i++) {
 			arr1[i] = i;
 			std::cout << arr1[i];
 		}
+		
+		std::cout << std::endl;
+		std::cout << std::endl << "Here are the values in the array arr2: ";
+		for (unsigned int i = 0; i < arr2.size(); i++)
+			std::cout << arr2[i];
 
 		std::cout << std::endl << std::endl << "Now we do the deep copy: arr2 = arr1" << std::endl << std::endl;
 		
