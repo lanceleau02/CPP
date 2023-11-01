@@ -12,9 +12,9 @@
 
 #include "BitcoinExchange.hpp"
 
-const char*	patterns[10] = {};
+const char*	patterns[10] = {"^(2009|20[1-9]{1}[0-9]{1}|2[1-9]{1}[0-9]{2})-(0[1-9]{1}|1[0-2]{1})-(0[1-9]{1}|[1-2]{1}[0-9]|3[0-1]{1}) \| ([+]?[0-9]+\.?[0-9]+|[+]?[0-9]+)$"};
 
-bool	searchPattern(const char* pattern, const std::string& input) {
+bool	RegExr(const char* pattern, const std::string& input) {
 	regex_t		regex;
 	regmatch_t	match;
 
@@ -45,5 +45,6 @@ void	BitcoinExchange(const char* file) {
 	
 	database.open(file);
 	if (isDirectory(file) == true || database.is_open() == false)
-		throw std::runtime_error("Impossible to open the database file!");
+		throw std::runtime_error("Error: could not open file.");
+	//parsing();
 }
