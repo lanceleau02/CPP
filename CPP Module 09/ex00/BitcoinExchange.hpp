@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/01 15:24:42 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/02 09:26:58 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <sys/stat.h>
 #include <fstream>
 
-extern const char*	patterns[10];
+extern const char*	dateRegex;
 
 void	BitcoinExchange(const char* file);
 
