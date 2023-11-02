@@ -6,27 +6,11 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/02 09:27:28 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:28:09 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-const char*	dateRegex = "^(2009|20[1-9]{1}[0-9]{1}|2[1-9]{1}[0-9]{2}|[3-9]{1}[0-9]{3})-(0[1-9]{1}|1[0-2]{1})-(0[1-9]{1}|[1-2]{1}[0-9]|3[0-1]{1})$";
-
-bool	RegExr(const char* pattern, const std::string& input) {
-	regex_t		regex;
-	regmatch_t	match;
-
-	if (regcomp(&regex, pattern, REG_EXTENDED) != 0)
-        return false;
-    if (regexec(&regex, input.c_str(), 1, &match, 0) == 0) {
-		regfree(&regex);
-		return true;
-	}
-	regfree(&regex);
-	return false;
-}
 
 static bool	isDirectory(const char *path) {
 	struct stat	info;
@@ -36,19 +20,52 @@ static bool	isDirectory(const char *path) {
 	return S_ISDIR(info.st_mode);
 }
 
-bool	parsing(const std::string& database) {
-	while (getline(database, std::string line)) {
-		if (!RegExr(dateRegex, line) || )
+bool	isValidDate(const std::string& date) {
+	int	year = atoi((date.substr(0, 4)).c_str());
+	int	month = atoi((date.substr(5, 2)).c_str());
+	int day = atoi((date.substr(8, 2)).c_str());
+	int	daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	if ((year == 2009 && month == 1 && (day >= 2 && day <= 31))
+		|| (year == 2009 && (month >= 2 && month <= 12))
+		|| (year >= 2010 && (month >= 1 && month <= 12))) {
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+			daysInMonth[2] = 29;
+		return day >= 1 && day <= daysInMonth[month];
 	}
+	return false;
+}
+
+bool	parseDate(const std::string& date) {
+	time_t		rawtime;
+	char		buffer[11];
+
+	time(&rawtime);
+	if (strftime(buffer, 11, "%F", localtime(&rawtime)) == 0 || !isValidDate(date))
+		return false;
+	return true;
+}
+
+template <typename T>
+bool	parseValue(T value) {
+	if (value < 0 || value > 1000)
+		return false;
+	return true;
+}
+
+bool	parsing(std::ifstream& database) {
+	std::string	line;
+
+	while (getline(database, line))
+		if (!parseDate(line.substr(0, 10) || line.substr(10, 3) != " | " || !parseValue(line.substr(13, (line.length() - 13)))))
+			throw std::runtime_error("Error: invalid database format.");
+	return true;
 }
 
 void	BitcoinExchange(const char* file) {
-	std::ifstream		database;
-	std::stringstream	buffer;
-	
-	database.open(file);
-	if (isDirectory(file) == true || database.is_open() == false)
+	std::ifstream		database(file);
+
+	if (!database.is_open())
 		throw std::runtime_error("Error: could not open file.");
-	buffer << database.rdbuf();
-	parsing(buffer.str());
+	parsing(database);
 }

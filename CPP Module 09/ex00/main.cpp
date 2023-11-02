@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/01 15:12:09 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:05:21 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	main(int argc, char **argv) {
 		std::cerr << "Error: invalid argument" << std::endl;
 		return 1;
 	}
-	BitcoinExchange(argv[1]);
+	try {
+		BitcoinExchange(argv[1]);
+	}
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	return 0;
 }

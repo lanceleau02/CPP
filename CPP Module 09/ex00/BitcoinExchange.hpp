@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/02 09:26:58 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:13:35 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <string>
-#include <regex.h>
 #include <sys/stat.h>
 #include <fstream>
-
-extern const char*	dateRegex;
+#include <ctime>
+#include <cstdlib>
+#include <typeinfo>
 
 void	BitcoinExchange(const char* file);
 
