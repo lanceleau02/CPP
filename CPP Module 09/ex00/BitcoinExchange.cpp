@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/03 15:09:27 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:03:49 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	isDirectory(const char* path) {
 	return S_ISDIR(info.st_mode);
 }
 
-bool	isValidDate(const std::string& date) {
+/* bool	isValidDate(const std::string& date) {
 	int	year = atoi((date.substr(0, 4)).c_str());
 	int	month = atoi((date.substr(5, 2)).c_str());
 	int day = atoi((date.substr(8, 2)).c_str());
@@ -34,19 +34,28 @@ bool	isValidDate(const std::string& date) {
 		return day >= 1 && day <= daysInMonth[month];
 	}
 	return false;
-}
+} */
 
 bool	parseDate(const std::string& date) {
-	time_t		rawtime;
-	char		buffer[11];
+	struct tm	tm;
+	int			daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     for (int i = 0; i < 10; ++i) {
         if (date[i] != '-' && (i == 4 || i == 7))
 			return false;
 	}
-	time(&rawtime);
-	if (strftime(buffer, 11, "%F", localtime(&rawtime)) == 0 || !isValidDate(date) || date.length() != 10)
+	if (strptime(date.c_str(), "%F", &tm) == NULL || date.length() != 10)
 		return false;
+	std::cout << tm.tm_year + 1900 << std::endl;
+	std::cout << tm.tm_mon  + 1 << std::endl;
+	std::cout << tm.tm_mday << std::endl;
+	if ((tm.tm_year == 2009 && tm.tm_mon == 1 && (tm.tm_mday >= 2 && tm.tm_mday <= 31))
+		|| (tm.tm_year == 2009 && (tm.tm_mon >= 2 && tm.tm_mon <= 12))
+		|| (tm.tm_year >= 2010 && (tm.tm_mon >= 1 && tm.tm_mon <= 12))) {
+		if (tm.tm_year % 4 == 0 && (tm.tm_year % 100 != 0 || tm.tm_year % 400 == 0))
+			daysInMonth[2] = 29;
+		return tm.tm_mday >= 1 && tm.tm_mday <= daysInMonth[tm.tm_mon];
+	}
 	return true;
 }
 
