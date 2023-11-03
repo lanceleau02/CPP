@@ -6,13 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/02 15:28:09 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:09:27 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-static bool	isDirectory(const char *path) {
+bool	isDirectory(const char* path) {
 	struct stat	info;
 	
 	if (stat(path, &info) != 0)
@@ -40,16 +40,30 @@ bool	parseDate(const std::string& date) {
 	time_t		rawtime;
 	char		buffer[11];
 
+    for (int i = 0; i < 10; ++i) {
+        if (date[i] != '-' && (i == 4 || i == 7))
+			return false;
+	}
 	time(&rawtime);
-	if (strftime(buffer, 11, "%F", localtime(&rawtime)) == 0 || !isValidDate(date))
+	if (strftime(buffer, 11, "%F", localtime(&rawtime)) == 0 || !isValidDate(date) || date.length() != 10)
 		return false;
 	return true;
 }
 
-template <typename T>
-bool	parseValue(T value) {
-	if (value < 0 || value > 1000)
+bool	parseValue(const std::string& value) {
+	std::stringstream	ss;
+	float				floatValue;
+	int					intValue;
+
+	if (value.find_first_not_of("0123456789+.") != std::string::npos)
 		return false;
+	ss << value;
+	if (value.find(".") != std::string::npos && ss >> floatValue)
+		if (floatValue < 0.00 || floatValue > 1000.00)
+			return false;
+	if (ss >> intValue)
+		if (intValue < 0 || intValue > 1000)
+			return false;
 	return true;
 }
 
@@ -57,7 +71,7 @@ bool	parsing(std::ifstream& database) {
 	std::string	line;
 
 	while (getline(database, line))
-		if (!parseDate(line.substr(0, 10) || line.substr(10, 3) != " | " || !parseValue(line.substr(13, (line.length() - 13)))))
+		if (!parseDate(line.substr(0, 10)) || line.substr(10, 3) != " | " || !parseValue(line.substr(13, line.length() - 13)))
 			throw std::runtime_error("Error: invalid database format.");
 	return true;
 }
@@ -65,7 +79,7 @@ bool	parsing(std::ifstream& database) {
 void	BitcoinExchange(const char* file) {
 	std::ifstream		database(file);
 
-	if (!database.is_open())
+	if (!database.is_open() || isDirectory(file))
 		throw std::runtime_error("Error: could not open file.");
 	parsing(database);
 }
