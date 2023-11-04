@@ -20,22 +20,6 @@ bool	isDirectory(const char* path) {
 	return S_ISDIR(info.st_mode);
 }
 
-/* bool	isValidDate(const std::string& date) {
-	int	year = atoi((date.substr(0, 4)).c_str());
-	int	month = atoi((date.substr(5, 2)).c_str());
-	int day = atoi((date.substr(8, 2)).c_str());
-	int	daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-	if ((year == 2009 && month == 1 && (day >= 2 && day <= 31))
-		|| (year == 2009 && (month >= 2 && month <= 12))
-		|| (year >= 2010 && (month >= 1 && month <= 12))) {
-		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
-			daysInMonth[2] = 29;
-		return day >= 1 && day <= daysInMonth[month];
-	}
-	return false;
-} */
-
 bool	parseDate(const std::string& date) {
 	struct tm	tm;
 	int			daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -46,15 +30,15 @@ bool	parseDate(const std::string& date) {
 	}
 	if (strptime(date.c_str(), "%F", &tm) == NULL || date.length() != 10)
 		return false;
-	std::cout << tm.tm_year + 1900 << std::endl;
-	std::cout << tm.tm_mon  + 1 << std::endl;
-	std::cout << tm.tm_mday << std::endl;
-	if ((tm.tm_year == 2009 && tm.tm_mon == 1 && (tm.tm_mday >= 2 && tm.tm_mday <= 31))
-		|| (tm.tm_year == 2009 && (tm.tm_mon >= 2 && tm.tm_mon <= 12))
-		|| (tm.tm_year >= 2010 && (tm.tm_mon >= 1 && tm.tm_mon <= 12))) {
-		if (tm.tm_year % 4 == 0 && (tm.tm_year % 100 != 0 || tm.tm_year % 400 == 0))
+	int	year = tm.tm_year + 1900;
+	int	month = tm.tm_mon + 1;
+	int	day = tm.tm_mday;
+	if ((year == 2009 && month == 1 && (day >= 2 && day <= 31))
+		|| (year == 2009 && (month >= 2 && month <= 12))
+		|| (year >= 2010 && (month >= 1 && month <= 12))) {
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
 			daysInMonth[2] = 29;
-		return tm.tm_mday >= 1 && tm.tm_mday <= daysInMonth[tm.tm_mon];
+		return day >= 1 && day <= daysInMonth[month];
 	}
 	return true;
 }
@@ -81,7 +65,7 @@ bool	parsing(std::ifstream& database) {
 
 	while (getline(database, line))
 		if (!parseDate(line.substr(0, 10)) || line.substr(10, 3) != " | " || !parseValue(line.substr(13, line.length() - 13)))
-			throw std::runtime_error("Error: invalid database format.");
+			throw std::runtime_error("Error: invalid database.");
 	return true;
 }
 
