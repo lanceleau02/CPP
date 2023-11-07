@@ -18,7 +18,8 @@ int	main(int argc, char **argv) {
 		return 1;
 	}
 	try {
-		BitcoinExchange(argv[1]);
+		BitcoinExchange	obj;
+		obj.core(argv[1]);
 	}
 	catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;

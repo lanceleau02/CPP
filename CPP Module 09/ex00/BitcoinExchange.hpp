@@ -17,11 +17,30 @@
 #include <string>
 #include <sys/stat.h>
 #include <fstream>
-#include <ctime>
-#include <cstdlib>
-#include <typeinfo>
 #include <sstream>
+#include <map>
+#include <cstdlib>
 
-void	BitcoinExchange(const char* file);
+extern int  daysInMonth[];
+
+class BitcoinExchange {
+    private:
+        int                                 _date[3];
+        std::map<std::string, std::string>  _data;
+
+        BitcoinExchange(const BitcoinExchange& source);
+        BitcoinExchange&    operator=(const BitcoinExchange& source);
+
+    public:
+        BitcoinExchange();
+        ~BitcoinExchange();
+        
+        bool            parseDate(const std::string& date);
+        bool            parseValue(const std::string& value);
+        void            parsing(std::ifstream& database);
+        std::string 	setPreviousDate(const std::string& date);
+        void            exec(const std::string& date, const std::string& value);
+        void            core(const char* file);
+};
 
 #endif
