@@ -129,7 +129,7 @@ void	BitcoinExchange::exec(const std::string& date, const std::string& value) {
 	std::string										prevDate = date;
 
 	while (it == _data.end()) {
-		const std::string& currDate = prevDate;
+		currDate = prevDate;
 		prevDate = setPreviousDate(currDate);
 		it = _data.find(prevDate);
 	}
