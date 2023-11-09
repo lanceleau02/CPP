@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/09 14:12:58 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:48:51 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ BitcoinExchange::BitcoinExchange() {
 	std::ifstream	database("data.csv");
 	std::string		line;
 
-	for (size_t i = 0; i < 3; i++)
-		_date[i] = 0;
 	if (!database.is_open() || isDirectory("data.csv"))
 		throw std::runtime_error("Error: could not open file.");
 	while (getline(database, line)) {
@@ -50,15 +48,15 @@ bool	BitcoinExchange::parseDate(const std::string& date) {
 	}
 	if (strptime(date.c_str(), "%F", &tm) == NULL || date.length() != 10)
 		return false;
-	_date[0] = tm.tm_year + 1900;
-	_date[1] = tm.tm_mon + 1;
-	_date[2] = tm.tm_mday;
-	if ((_date[0] == 2009 && _date[1] == 1 && (_date[2] >= 2 && _date[2] <= 31))
-		|| (_date[0] == 2009 && (_date[1] >= 2 && _date[1] <= 12))
-		|| (_date[0] >= 2010 && (_date[1] >= 1 && _date[1] <= 12))) {
-		if (_date[0] % 4 == 0 && (_date[0] % 100 != 0 || _date[0] % 400 == 0))
+	int year = tm.tm_year + 1900;
+	int month = tm.tm_mon + 1;
+	int day = tm.tm_mday;
+	if ((year == 2009 && month == 1 && (day >= 2 && day <= 31))
+		|| (year == 2009 && (month >= 2 && month <= 12))
+		|| (year >= 2010 && (month >= 1 && month <= 12))) {
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
 			daysInMonth[2] = 29;
-		return _date[2] >= 1 && _date[2] <= daysInMonth[_date[1]];
+		return day >= 1 && day <= daysInMonth[month];
 	}
 	return true;
 }
@@ -79,6 +77,17 @@ bool	BitcoinExchange::parseValue(const std::string& value) {
 	return false;
 }
 
+void	BitcoinExchange::exec(const std::string& date, const std::string& value) {
+	std::map<std::string, std::string>::iterator	it = _data.find(date);
+
+	if (it == _data.end()) {
+		it = _data.lower_bound(date);
+		if (it != _data.begin())
+			--it;
+	}
+	std::cout << date << " => " << value << " = " << atof(it->second.c_str()) * atof(value.c_str()) << std::endl;
+}
+
 void	BitcoinExchange::parsing(std::ifstream& database) {
 	std::string	line;
 	
@@ -97,17 +106,6 @@ void	BitcoinExchange::parsing(std::ifstream& database) {
 			continue;
 		exec(line.substr(0, delim - 1), line.substr(delim + 2, line.length()));
 	}
-}
-
-void	BitcoinExchange::exec(const std::string& date, const std::string& value) {
-	std::map<std::string, std::string>::iterator	it = _data.find(date);
-
-	if (it == _data.end()) {
-		it = _data.lower_bound(date);
-		if (it != _data.begin())
-			--it;
-	}
-	std::cout << date << " => " << value << " = " << atof(it->second.c_str()) * atof(value.c_str()) << std::endl;
 }
 
 void	BitcoinExchange::core(const char* file) {

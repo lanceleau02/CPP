@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/09 13:55:39 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:44:41 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 class BitcoinExchange {
     private:
-        int                                 _date[3];
         std::map<std::string, std::string>  _data;
 
         BitcoinExchange(const BitcoinExchange& source);

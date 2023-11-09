@@ -6,8 +6,10 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:12:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/09 13:13:03 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:42:46 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+#include <stack>
