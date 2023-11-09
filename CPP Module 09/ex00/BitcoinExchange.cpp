@@ -6,13 +6,12 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/03 16:03:49 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:12:58 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int  daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 static bool	isDirectory(const char* path) {
 	struct stat	info;
@@ -43,6 +42,7 @@ BitcoinExchange::~BitcoinExchange() {}
 
 bool	BitcoinExchange::parseDate(const std::string& date) {
 	struct tm	tm;
+	int			daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     for (int i = 0; i < 10; ++i) {
         if (date[i] != '-' && (i == 4 || i == 7))
@@ -95,43 +95,17 @@ void	BitcoinExchange::parsing(std::ifstream& database) {
 		}
 		if (!parseValue(line.substr(delim + 2, line.length())))
 			continue;
-		//std::cout << "exec" << std::endl;
 		exec(line.substr(0, delim - 1), line.substr(delim + 2, line.length()));
 	}
 }
 
-std::string	BitcoinExchange::setPreviousDate(const std::string& date) {
-	int	year = atoi((date.substr(0, 4)).c_str());
-	int	month = atoi((date.substr(5, 2)).c_str());
-    int	day = atoi((date.substr(8, 2)).c_str());
-
-    day--;
-    if (day == 0) {
-        month--;
-        if (month == 0) {
-            month = 12;
-            year--;
-        }
-        day = daysInMonth[month];
-    }
-	std::stringstream convert;
-	convert << year;
-	std::string	newYear = convert.str();
-	convert << month;
-    std::string	newMonth = (month < 10) ? "0" + convert.str() : convert.str();
-	convert << day;
-    std::string	newDay = (day < 10) ? "0" + convert.str() : convert.str();
-	return newYear + "-" + newMonth + "-" + newDay;
-}
-
 void	BitcoinExchange::exec(const std::string& date, const std::string& value) {
 	std::map<std::string, std::string>::iterator	it = _data.find(date);
-	std::string										prevDate = date;
 
-	while (it == _data.end()) {
-		currDate = prevDate;
-		prevDate = setPreviousDate(currDate);
-		it = _data.find(prevDate);
+	if (it == _data.end()) {
+		it = _data.lower_bound(date);
+		if (it != _data.begin())
+			--it;
 	}
 	std::cout << date << " => " << value << " = " << atof(it->second.c_str()) * atof(value.c_str()) << std::endl;
 }

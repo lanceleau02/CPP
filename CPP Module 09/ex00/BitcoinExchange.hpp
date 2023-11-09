@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/03 15:58:36 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:55:39 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include <sstream>
 #include <map>
 #include <cstdlib>
-
-extern int  daysInMonth[];
 
 class BitcoinExchange {
     private:
@@ -38,7 +36,6 @@ class BitcoinExchange {
         bool            parseDate(const std::string& date);
         bool            parseValue(const std::string& value);
         void            parsing(std::ifstream& database);
-        std::string 	setPreviousDate(const std::string& date);
         void            exec(const std::string& date, const std::string& value);
         void            core(const char* file);
 };
