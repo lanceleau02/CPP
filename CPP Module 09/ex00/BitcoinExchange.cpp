@@ -6,12 +6,11 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/09 14:48:51 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:37:45 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
 
 static bool	isDirectory(const char* path) {
 	struct stat	info;
@@ -38,7 +37,7 @@ BitcoinExchange::BitcoinExchange() {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-bool	BitcoinExchange::parseDate(const std::string& date) {
+static bool	parseDate(const std::string& date) {
 	struct tm	tm;
 	int			daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -61,7 +60,7 @@ bool	BitcoinExchange::parseDate(const std::string& date) {
 	return true;
 }
 
-bool	BitcoinExchange::parseValue(const std::string& value) {
+static bool	parseValue(const std::string& value) {
 	std::stringstream	ss;
 	float				floatValue;
 	long				longValue;
@@ -77,20 +76,12 @@ bool	BitcoinExchange::parseValue(const std::string& value) {
 	return false;
 }
 
-void	BitcoinExchange::exec(const std::string& date, const std::string& value) {
-	std::map<std::string, std::string>::iterator	it = _data.find(date);
+void	BitcoinExchange::program(const char* file) {
+	std::ifstream	database(file);
 
-	if (it == _data.end()) {
-		it = _data.lower_bound(date);
-		if (it != _data.begin())
-			--it;
-	}
-	std::cout << date << " => " << value << " = " << atof(it->second.c_str()) * atof(value.c_str()) << std::endl;
-}
-
-void	BitcoinExchange::parsing(std::ifstream& database) {
+	if (!database.is_open() || isDirectory(file))
+		throw std::runtime_error("Error: could not open file.");
 	std::string	line;
-	
 	getline(database, line);
 	if (line != "date | value") {
 		std::cerr << "Error: invalid database format." << std::endl;
@@ -104,15 +95,15 @@ void	BitcoinExchange::parsing(std::ifstream& database) {
 		}
 		if (!parseValue(line.substr(delim + 2, line.length())))
 			continue;
-		exec(line.substr(0, delim - 1), line.substr(delim + 2, line.length()));
+		std::string	date = line.substr(0, delim - 1);
+		std::string	value = line.substr(delim + 2, line.length());
+		std::map<std::string, std::string>::iterator	it = _data.find(date);
+		if (it == _data.end()) {
+			it = _data.lower_bound(date);
+			if (it != _data.begin())
+				--it;
+		}
+		std::cout << date << " => " << value << " = " << atof(it->second.c_str()) * atof(value.c_str()) << std::endl;
 	}
-}
-
-void	BitcoinExchange::core(const char* file) {
-	std::ifstream		database(file);
-
-	if (!database.is_open() || isDirectory(file))
-		throw std::runtime_error("Error: could not open file.");
-	parsing(database);
 	database.close();
 }

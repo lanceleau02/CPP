@@ -6,17 +6,17 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:12:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/10 12:11:57 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:42:02 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN() {
+std::stack<int, std::vector<int> >	RPN::_stack;
 
+static int	operate(int nb1, int nb2, char op) {
+	return (op == '+') ? nb1 + nb2 : (op == '-') ? nb1 - nb2 : (op == '*') ? nb1 * nb2 : (op == '/') ? nb1 / nb2 : 0;
 }
-
-RPN::~RPN() {}
 
 void	RPN::program(const char* str) {
 	std::string	rpn(str);
@@ -26,13 +26,17 @@ void	RPN::program(const char* str) {
 	for (std::string::iterator it = rpn.begin(); it != rpn.end(); ++it) {
         char c = *it;
 		char *s = &c;
-        if (isdigit(*it) && it + 1 != rpn.end() && isdigit(*(it + 1)))
+        if (isdigit(c) && it + 1 != rpn.end() && isdigit(*(it + 1)))
 			throw std::invalid_argument("Error");
-		else if (isdigit(*it))
+		else if (isdigit(c))
 			_stack.push(atoi(s));
-    }
-	while (!_stack.empty()) {
-        std::cout << _stack.top() << " ";
-		_stack.pop();
-    }
+		if (c == '+' || c == '-' || c == '/' || c == '*') {
+			int nb2 = _stack.top();
+			_stack.pop();
+			int nb1 = _stack.top();
+			_stack.pop();
+			_stack.push(operate(nb1, nb2, c));
+		}
+	}
+	std::cout << _stack.top() << std::endl;
 }

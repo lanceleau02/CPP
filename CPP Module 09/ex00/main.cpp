@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/09 15:09:37 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:37:51 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv) {
 	}
 	try {
 		BitcoinExchange	obj;
-		obj.core(argv[1]);
+		obj.program(argv[1]);
 	}
 	catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;

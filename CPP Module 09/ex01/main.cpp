@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:11:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/10 10:49:24 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:38:35 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	main(int argc, char **argv) {
 		return 1;
 	}
 	try {
-		RPN	obj;
-		obj.program(argv[1]);
+		RPN::program(argv[1]);
 	}
 	catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;

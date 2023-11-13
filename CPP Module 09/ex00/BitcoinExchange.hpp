@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/09 15:01:56 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:37:33 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,8 @@ class BitcoinExchange {
     public:
         BitcoinExchange();
         ~BitcoinExchange();
-        
-        bool            parseDate(const std::string& date);
-        bool            parseValue(const std::string& value);
-        void            parsing(std::ifstream& database);
-        void            exec(const std::string& date, const std::string& value);
-        void            core(const char* file);
+
+        void	program(const char* file);
 };
 
 #endif
