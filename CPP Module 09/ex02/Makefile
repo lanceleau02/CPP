@@ -6,7 +6,7 @@
 #    By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/01 14:56:17 by laprieur          #+#    #+#              #
-#    Updated: 2023/11/13 12:44:43 by laprieur         ###   ########.fr        #
+#    Updated: 2023/11/14 11:52:41 by laprieur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME			:= PmergeMe
 # **************************************************************************** #
 
 SRC				:=	main.cpp		\
-					PmergeMe.cpp	\
+					#PmergeMe.cpp	\
 					
 SRC_OBJS		:=	$(SRC:%.cpp=.build/%.o)
 DEPS			:=	$(SRC_OBJS:%.o=%.d)
