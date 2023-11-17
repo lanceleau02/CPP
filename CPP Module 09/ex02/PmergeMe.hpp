@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:40:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/17 14:02:26 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:36:27 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <cstddef>
+#include <cmath>
 
 std::vector<int>	PmergeMe(std::vector<int> X);
 

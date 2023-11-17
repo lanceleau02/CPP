@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:40:55 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/17 15:59:57 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:36:46 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ std::vector<int>::iterator	binarySearch(std::vector<int> A, size_t n, int T) {
 	
 	while (L <= R) {
 		int m = floor((L + R) / 2);
-		if (S[m] < T)
+		if (A[m] < T)
 			L = m + 1;
-		else if (S[m] > T)
+		else if (A[m] > T)
 			R = m - 1;
 	}
-	std::vector<int>::iterator it = S.begin();
+	std::vector<int>::iterator it = A.begin();
 	std::advance(it, L);
 	return it;
 }
@@ -91,7 +91,7 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 	// STEP 5: Insert the remaining [n/2] - 1 elements of X\S into S, one at a time
 	
 	for (std::vector<int>::iterator it = pairs.begin(); it != pairs.end(); it++)
-		S.insert(binarySearch(S, S.size(), ))
+		S.insert(binarySearch(S, S.size(), it->second), it->second);
 
 	return X;
 }
