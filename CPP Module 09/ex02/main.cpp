@@ -6,12 +6,14 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:43:43 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/16 14:12:47 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:02:36 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <vector>
+
+#include "PmergeMe.hpp"
 
 #define UNDERLINE "\033[4m"
 #define YELLOW	"\033[33m"
@@ -19,5 +21,8 @@
 #define NONE	"\033[0m"
 
 int	main(void) {
-	
+	std::vector<int> myVector;
+    int initialValues[] = {5, 2, 9, 1, 7, 6, 3, 8, 4}; // Specify initial values
+    myVector.assign(initialValues, initialValues + sizeof(initialValues) / sizeof(int));
+	PmergeMe(myVector);
 }
