@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:40:55 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/22 09:26:43 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:52:50 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 
 	S = PmergeMe(S);
 	std::vector<int>	copyS(S);
+	copyS.erase(copyS.begin());
 
 	std::cout << "Sorted = ";
 	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
@@ -113,30 +114,42 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 		std::cout << *it << " ";
 	std::cout << std::endl;
 
+	std::cout << "copyS = ";
+	for (std::vector<int>::iterator it = copyS.begin(); it != copyS.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
 	// Jacobsthal
 
 	std::vector<int>	group;
 	int					i = 0;
-	int	mem = 0;
-	int	tmp = 0;
 
 	while (!copyS.empty()) {
 		int size = Jacobsthal(i);
-		if (size + mem + 1 > (int)copyS.size())
-			group.insert(group.begin(), copyS.begin() + size + mem - 1, copyS.end());
+		if (size > (int)copyS.size())
+			group.insert(group.begin(), copyS.begin(), copyS.end());
 		else
-			group.insert(group.begin(), copyS.begin(), copyS.begin() + size + mem);
+			group.insert(group.begin(), copyS.begin(), copyS.begin() + size);
 
-		for (std::vector<int>::iterator it = group.end() - 1; it != group.begin(); it--) {
+		std::reverse(group.begin(), group.end());
+		for (std::vector<int>::iterator it = group.begin(); it != group.end(); it++) {
 			std::vector<std::pair<int, int> >::iterator	min = findElement(pairs, *it);
-			S.insert(binarySearch(copyS, 0, copyS.size() - 1, min->second), min->second);
+			int index = std::distance(S.begin(), binarySearch(S, 0, S.size() - 1, min->first) - 1);
+			S.insert(binarySearch(S, 0, index, min->second), min->second);
 			pairs.erase(min);
 		}
-		mem += tmp;
-
-		copyS.erase(copyS.begin() + i);
+		if (size > (int)copyS.size())
+			copyS.clear();
+		else
+			copyS.erase(copyS.begin(), copyS.begin() + size);
+		group.clear();
 		i++;
 	}
+	
+	std::cout << "copyS = ";
+	for (std::vector<int>::iterator it = copyS.begin(); it != copyS.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 
 	// STEP 5: Insert the remaining [n/2] - 1 elements of X\S into S, one at a time
 	
@@ -151,8 +164,10 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 		std::cout << *it << " ";
 	std::cout << std::endl;
 
-	if (X.size() % 2 != 0)
+	if (X.size() % 2 != 0) {
+		std::cout << "inserting rest:" << *(X.end() - 1) << std::endl;
 		S.insert(binarySearch(S, 0, S.size() - 1, *(X.end() - 1)), *(X.end() - 1));
+	}
 
 	std::cout << "S = ";
 	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
