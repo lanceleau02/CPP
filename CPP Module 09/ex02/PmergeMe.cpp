@@ -6,16 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:40:55 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/20 16:41:06 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:26:43 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-std::vector<int>::iterator	binarySearch(std::vector<int> A, size_t n, int T) {
-	int	L = 0;
-	int	R = n - 1;
-	
+std::vector<int>::iterator	binarySearch(std::vector<int>& A, int L, int R, int T) {	
 	while (L <= R) {
 		int m = floor((L + R) / 2);
 		if (A[m] < T)
@@ -31,11 +28,24 @@ std::vector<int>::iterator	binarySearch(std::vector<int> A, size_t n, int T) {
 }
 
 std::vector<std::pair<int, int> >::iterator findElement(std::vector<std::pair<int, int> >& pairs, int target) {
-	for (std::vector<std::pair<int, int> >::iterator it; it != pairs.end(); it++) {
+	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++) {
 		if (it->first == target)
 			return it;
 	}
 	return (pairs.end());
+}
+
+int	Jacobsthal(int n) {
+	int	pprev = 0;
+	int	prev = 2;
+	int	res = 2;
+
+	for (int i = 0; i < n; i++) {
+		res = prev + (2 * pprev);
+		pprev = prev;
+		prev = res;
+	}
+	return res;
 }
 
 std::vector<int>	PmergeMe(std::vector<int> X) {
@@ -58,6 +68,7 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 		pair.first = (*it > *(it + 1)) ? *it : *(it + 1);
 		pair.second = (*it < *(it + 1)) ? *it : *(it + 1);
 		pairs.push_back(pair);
+		S.push_back(pair.first);
 	}
 
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++) {
@@ -68,13 +79,6 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 	std::cout << std::endl;
 	std::cout << "STEP 2: Perform [n/2] comparisons, one per pair, to determine the larger of the two elements in each pair." << std::endl;
 	std::cout << std::endl;
-
-	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++) {
-		if (it->first > it->second)
-			S.push_back(it->first);
-		else
-			S.push_back(it->second);
-	}
 	
 	std::cout << "S = ";
 	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
@@ -87,8 +91,9 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 	std::cout << std::endl;
 
 	S = PmergeMe(S);
+	std::vector<int>	copyS(S);
 
-	std::cout << "S = ";
+	std::cout << "Sorted = ";
 	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
@@ -101,31 +106,70 @@ std::vector<int>	PmergeMe(std::vector<int> X) {
 	std::vector<std::pair<int, int> >::iterator	it = findElement(pairs, S.front());
 	
 	S.insert(S.begin(), it->second);
+	pairs.erase(it);
 
-/* 	if (pairs[0][0] < pairs[0][1]) {
-		S.insert(S.begin(), pairs[0][0]);
+	std::cout << "S = ";
+	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	// Jacobsthal
+
+	std::vector<int>	group;
+	int					i = 0;
+	int	mem = 0;
+	int	tmp = 0;
+
+	while (!copyS.empty()) {
+		int size = Jacobsthal(i);
+		if (size + mem + 1 > (int)copyS.size())
+			group.insert(group.begin(), copyS.begin() + size + mem - 1, copyS.end());
+		else
+			group.insert(group.begin(), copyS.begin(), copyS.begin() + size + mem);
+
+		for (std::vector<int>::iterator it = group.end() - 1; it != group.begin(); it--) {
+			std::vector<std::pair<int, int> >::iterator	min = findElement(pairs, *it);
+			S.insert(binarySearch(copyS, 0, copyS.size() - 1, min->second), min->second);
+			pairs.erase(min);
+		}
+		mem += tmp;
+
+		copyS.erase(copyS.begin() + i);
+		i++;
 	}
-	else {
-		S.insert(S.begin(), pairs[0][1]);
+
+	// STEP 5: Insert the remaining [n/2] - 1 elements of X\S into S, one at a time
+	
+/* 	for (std::vector<int>::iterator it = group.begin() + 1; it != group.end(); it++) {
+		std::vector<std::pair<int, int> >::iterator	min = findElement(pairs, *it);
+		S.insert(binarySearch(S, 0, S.size() - 1, min->second), min->second);
+		pairs.erase(min);
 	} */
 
 	std::cout << "S = ";
 	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
-	
-/* 	// STEP 5: Insert the remaining [n/2] - 1 elements of X\S into S, one at a time
-	
-	for (std::vector<int>::iterator it = pairs.begin(); it != pairs.end(); it++)
-		S.insert(binarySearch(S, S.size(), it->second), it->second);
+
+	if (X.size() % 2 != 0)
+		S.insert(binarySearch(S, 0, S.size() - 1, *(X.end() - 1)), *(X.end() - 1));
 
 	std::cout << "S = ";
 	for (std::vector<int>::iterator it = S.begin(); it != S.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
-		
-	for (size_t i = 0; i < pairs.size(); i++)
-		S.insert(binarySearch(S, S.size(), pairs[i][0]), pairs[i][0]); */
 
 	return S;
 }
+
+/*
+La suite de Jacobsthal va nous servir à créer des paquets de 2, 2, 6, 10, 22, 42... minimums
+en suivant l'ordre des maximums triés.
+
+Exemple :
+
+Pour la suite {5, 2, 9, 1, 7, 6, 3, 8, 4}, les maximums triés sont : 5, 7, 8, 9.
+
+Le minimum associé à 5 (2) est déjà inséré donc on va commencer à partir de 7
+et insérer les 2 minimums de 7 et 8 en commençant par la fin, donc on obtient : 2, 3, 5, 6, 7, 8, 9.
+*/
