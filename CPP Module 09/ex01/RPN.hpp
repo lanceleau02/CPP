@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:13:06 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/13 11:42:09 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:27:54 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 class RPN {
 	private:
-		static std::stack<int, std::vector<int> >	_stack;
+		static std::stack<int>	_stack;
 
 		RPN();
 		RPN(const RPN& source);

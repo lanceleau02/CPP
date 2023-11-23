@@ -6,13 +6,13 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:12:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/13 11:42:02 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:28:12 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-std::stack<int, std::vector<int> >	RPN::_stack;
+std::stack<int>	RPN::_stack;
 
 static int	operate(int nb1, int nb2, char op) {
 	return (op == '+') ? nb1 + nb2 : (op == '-') ? nb1 - nb2 : (op == '*') ? nb1 * nb2 : (op == '/') ? nb1 / nb2 : 0;

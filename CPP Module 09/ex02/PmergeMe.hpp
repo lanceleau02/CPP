@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:40:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/22 11:17:08 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:54:10 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,37 @@
 # define PMERGEME_HPP
 
 #include <iostream>
+#include <deque>
 #include <vector>
 #include <cstddef>
 #include <cmath>
 #include <algorithm>
 
-std::vector<int>	PmergeMe(std::vector<int> X);
+void	PmergeMe(char **argv);
+
+template <typename Container>
+typename Container::iterator	binarySearch(Container& A, int L, int R, int T) {	
+	while (L <= R) {
+		int m = floor((L + R) / 2);
+		if (A[m] < T)
+			L = m + 1;
+		else if (A[m] > T)
+			R = m - 1;
+		else
+			return A.begin() + m;
+	}
+	typename Container::iterator it = A.begin();
+	std::advance(it, L);
+	return it;
+}
+
+template <typename Container>
+typename Container::iterator findElement(Container& pairs, typename Container::value_type::first_type target) {
+    for (typename Container::iterator it = pairs.begin(); it != pairs.end(); ++it) {
+        if (it->first == target)
+            return it;
+    }
+    return pairs.end();
+}
 
 #endif
