@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:12:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/23 13:28:12 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:48:00 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@ void	RPN::program(const char* str) {
 			throw std::invalid_argument("Error");
 		else if (isdigit(c))
 			_stack.push(atoi(s));
-		if (c == '+' || c == '-' || c == '/' || c == '*') {
+		if (_stack.size() > 1 && (c == '+' || c == '-' || c == '/' || c == '*')) {
 			int nb2 = _stack.top();
+			if (nb2 == 0 && c == '/')
+				throw std::runtime_error("Error: division by zero");
 			_stack.pop();
 			int nb1 = _stack.top();
 			_stack.pop();
 			_stack.push(operate(nb1, nb2, c));
 		}
 	}
-	std::cout << _stack.top() << std::endl;
+	if (!_stack.empty())
+		std::cout << _stack.top() << std::endl;
 }

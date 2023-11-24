@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:02:30 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/24 10:16:55 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:48:18 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ class BitcoinExchange {
 
         void	program(const char* file);
 };
+
+bool	isDirectory(const char* path);
+bool	parseDate(const std::string& date);
+bool	parseValue(const std::string& value);
 
 #endif
