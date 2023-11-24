@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:40:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/23 12:54:10 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/24 10:18:28 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <deque>
 #include <vector>
-#include <cstddef>
 #include <cmath>
 #include <algorithm>
 

@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:13:06 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/23 13:27:54 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/24 10:17:31 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <string>
 #include <stack>
-#include <vector>
 #include <cstdlib>
 
 class RPN {
