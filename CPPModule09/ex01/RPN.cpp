@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:12:53 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/24 11:48:00 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:42:25 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	RPN::program(const char* str) {
         char c = *it;
 		char *s = &c;
         if (isdigit(c) && it + 1 != rpn.end() && isdigit(*(it + 1)))
-			throw std::invalid_argument("Error");
+			throw std::invalid_argument("Error: invalid value(s)");
 		else if (isdigit(c))
 			_stack.push(atoi(s));
 		if (_stack.size() > 1 && (c == '+' || c == '-' || c == '/' || c == '*')) {
@@ -40,6 +40,8 @@ void	RPN::program(const char* str) {
 			_stack.push(operate(nb1, nb2, c));
 		}
 	}
-	if (!_stack.empty())
+	if (!_stack.empty() && _stack.size() == 1)
 		std::cout << _stack.top() << std::endl;
+	else if (!_stack.empty())
+		throw std::runtime_error("Error");
 }

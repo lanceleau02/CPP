@@ -6,7 +6,7 @@
 /*   By: laprieur <laprieur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:01 by laprieur          #+#    #+#             */
-/*   Updated: 2023/11/24 13:48:27 by laprieur         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:07:53 by laprieur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void	BitcoinExchange::program(const char* file) {
 		std::string	date = line.substr(0, delim - 1);
 		std::string	value = line.substr(delim + 2, line.length());
 		std::map<std::string, std::string>::iterator	it = _data.find(date);
+		if (date < _data.begin()->first) {
+			std::cerr << "Error: impossible to find in database" << std::endl;
+			continue;
+		}
 		if (it == _data.end()) {
 			it = _data.lower_bound(date);
 			if (it != _data.begin())
