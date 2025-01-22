@@ -58,3 +58,4 @@ For more details, see the [LICENSE](https://github.com/lanceleau02/CPP/blob/main
 ## Resources
 
 - [Apprenez à programmer en C++ (OpenClassrooms)](https://openclassrooms.com/en/courses/1894236-apprenez-a-programmer-en-c)
+- [C++ Tutorial for Beginners - Full Course (YouTube)](https://www.youtube.com/watch?v=vLnPwxZdW4Y)
